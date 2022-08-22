@@ -43,6 +43,7 @@ input {
     animation-iteration-count: infinite;
     transform-origin: bottom;
     width: 200px;
+    border-radius: 100em;
 }
 input:hover {
     animation-name: bounce;
