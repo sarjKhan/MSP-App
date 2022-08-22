@@ -6,17 +6,7 @@
     font-family: 'Avenir', Helvetica, sans-serif;
 }
 
-@keyframes translate {
-    0% {
-        transform: translateY(-100%)
-    }
-    50% {
-        transform: translateY(-50%)
-    }
-    100% {
-        transform: translateY(0%)
-    }
-}
+
 html {
     background-color: #152733;
     color: white;
@@ -108,3 +98,42 @@ a:link, a:visited {
     color: white;
 }
 
+/*This is the css for the translation on the index page*/
+@keyframes translate {
+    0% {
+        transform: translateY(-500%)
+    }
+    100% {
+        transform: translateY(0%)
+    }
+}
+
+#index_button {
+    animation-name: translate;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+/*Css for bloom of the headings in index page*/
+.index_h1, .index_h2 {
+    opacity: 0;
+}
+@keyframes bloom {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.index_h1 {
+    animation: bloom 2s;
+    animation-delay: 2s;  
+    animation-fill-mode: forwards;  
+}
+
+.index_h2 {
+    animation: bloom 2s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+}
