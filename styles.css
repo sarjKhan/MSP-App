@@ -151,3 +151,14 @@ a:link, a:visited {
     animation-delay: 3s;
     animation-fill-mode: forwards;
 }
+.input span{
+    color: red;
+}
+
+#submit-error{
+    color: red;
+}
+
+.input i{
+    color:seagreen;
+}
