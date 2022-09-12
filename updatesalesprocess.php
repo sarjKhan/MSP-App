@@ -26,7 +26,7 @@
 
                     //Creating database connection.
                     $conn = new mysqli($host, $user, $pswd, $db);
-                    $conn = new mysqli($host, $user, $pswd, $db);
+
                     //Check if error with connection
                     if ($conn->connect_errno)
                     {
@@ -41,18 +41,9 @@
                     $result = $conn->query($querychecksales);
 
                     //Checking result from uery
-                    if ($result === TRUE)
+                    if ($result->num_rows == 0) 
                     {
-                        $rows = mysqli_num_rows($result);
-
-                        if ($rows != 1)
-                        {
-                            $errorMsg[] = "Sales ID ($sales_id) not found";
-                        }
-                    }
-                    else
-                    {
-                        $errorMsg[] = "Sales ID ($sales_id) does not exist." . $conn->error;
+                        $errorMsg[] = "Sales record with ID $sales_id does not exist.";
                     }
 
                     $conn->close();
@@ -64,7 +55,6 @@
 
                 $member_id = $_POST['member_id'];
 
-                //Validating members id
 
                 //Validating member id is not empty and is number
                 if (strlen($member_id) > 0 && is_numeric($member_id))
@@ -89,19 +79,9 @@
                     $result = $conn->query($checkmember);
 
                     //Checking result from query
-                    if ($result == TRUE)
-                    {      
-                        //Checking if member data was retrieved from database.
-                        $rows = mysqli_num_rows($result);
-
-                        if ($rows != 1)
-                        {
-                            $errorMsg[] = "Member with id $member_id does not exist.";
-                        }
-                    }
-                    else
+                    if ($result->num_rows == 0) 
                     {
-                        $errorMsg[] = "Error with SQL: [$checkmember]. " . $conn->error;
+                        $errorMsg[] = "Sales record with ID $sales_id does not exist.";
                     }
 
                     //Closing connection
@@ -203,7 +183,7 @@
                         echo "<p>Error with database: " . $conn->error . "</p>";
                     }
 
-                    $updatquery = "UPDATE sales_records SET member_id = $member_id, transaction_id = $transaction_id, item_name = $item_name, item_quantity = $item_quantity, date_sold = $date_sold WHERE sales_id = $sales_id;";
+                    $updatquery = "UPDATE `sales_records` SET `member_id` = $member_id , `transaction_id` = $transaction_id , `item_name` = '$item_name' , `item_quantity` = $item_quantity , `date_sold` = $date_sold WHERE `sales_id` = $sales_id;";
 
                     if ($conn->query($updatquery) === TRUE)
                     {

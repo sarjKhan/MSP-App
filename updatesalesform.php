@@ -44,19 +44,9 @@
                 //Executing query and getting result
                 $result = $conn->query($querychecksales);
 
-                //Checking result from uery
-                if ($result === TRUE)
+                if ($result->num_rows == 0) 
                 {
-                    $rows = mysqli_num_rows($result);
-
-                    if ($rows != 1)
-                    {
-                        $errorMsg[] = "Sales ID ($sales_id) not found";
-                    }
-                }
-                else
-                {
-                    $errorMsg[] = "Sales ID ($sales_id) does not exist." . $conn->error;
+                    $errorMsg[] = "Sales record with ID $sales_id does not exist.";
                 }
 
                 //Check if no errors
@@ -67,7 +57,7 @@
                     while ($row = $result->fetch_assoc())
                     {
                         //Setting up form with values from database as values in form.
-                        echo "<form method='updatesalesprocess.php' action='POST'>";
+                        echo "<form method='POST' action='updatesalesprocess.php'>";
                         echo "<input type='hidden' name='sales_id' value='" . $row['sales_id'] . "' />";
                         echo "<label for='member_id'>Member ID: </label>";
                         echo "<input type='text' name='member_id' id='member_id' value='" . $row['member_id'] ."' />";
@@ -82,7 +72,7 @@
                         echo "<input type='text' name='item_quantity' id='item_quantity' value='". $row['item_quantity'] . "' />";
                         echo "<br/>";
                         echo "<label for='date_sold'>Date Sold:</label>";
-                        echo "<input type='date' name='date_sold' id='date_sold' />";
+                        echo "<input type='date' name='date_sold' id='date_sold' value='" . $row['date_sold'] . "' />";
                         echo "<input type='submit' name='Update Sales Record' value='Update Sales Record' />";
                         echo "</form>";
                     }
