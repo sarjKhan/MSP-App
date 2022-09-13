@@ -23,7 +23,6 @@
                     <label for="f_name">First Name:&nbsp;</label><br>
                     <input id="f_name" type="text" name="f_name" placeholder="John" onkeyup="validateFName()">
                     <span id="fname_error"></span>
-                                 
                 </div>
                 <div class="input">
                     <label for="l_name">Last Name:&nbsp;</label><br>
@@ -36,9 +35,9 @@
                     <span id="phone_error"></span>
                 </div>
                 <div class="input">
-                    <label for="qnt">Address:&nbsp;</label><br>
-                    <input id="address" type="text" name="qnt" min="0" placeholder="Enter Address" onkeyup="validateAddress()">
-                    <span id="address_error"></span>
+                    <label for="email">Email:&nbsp;</label><br>
+                    <input id="email" type="email" name="email" min="0" placeholder="abcd@domain.com" onkeyup="validateEmail()">
+                    <span id="email_error"></span>
                 </div>
                 <span id="submit-error"></span>
                 <button type="submit" class="button" onclick="return validateForm()"> Add Member</button>
@@ -46,7 +45,7 @@
             </div>
         </fieldset>
     </form>
-    <a href="add_choose.html">
+    <a href="manage_members.html">
         <p class="back">&larr;&nbsp;Go Back</p>
     </a>
 </body>
