@@ -8,8 +8,8 @@ var submitError = document.getElementById('submit-error')
 
 function validateFName(){
 	var fname = document.getElementById('f_name').value;
-	if (fname.length == 0 || fname.length <=2 || fname== null){
-		fnameError.innerHTML = '<br>Cannot be empty or less than 3 characters';	
+	if (fname.length == 0 || fname.length <=1 || fname== null){
+		fnameError.innerHTML = '<br>Cannot be empty or less than 2 characters';	
 		return false;
 	}
 	if(!fname.match(/^[a-zA-Z]+$/)) {
@@ -60,12 +60,16 @@ function validateEmail(){
 		emailError.innerHTML = '<br>Cannot be empty';	
 		return false;
 	}
+	if (!email.match(/[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9.-]{3,}\.[a-zA-Z]{2,4}/)) {
+		emailError.innerHTML = '<br>Must use correct email format';	
+		return false;
+	}
 	emailError.innerHTML ='<i class="fa-solid fa-circle-check"></i>';
 	return true;
 }
 
 function validateForm(){
-	if (!validateFName() || !validateLName() || !validatePhone() || !validateAddress()){
+	if (!validateFName() || !validateLName() || !validatePhone() || !validateEmail()){
 		submitError.style.display = 'block';
 		submitError.innerHTML = 'Please fix errors to submit';
 		setTimeout(() => {
