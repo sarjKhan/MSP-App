@@ -92,11 +92,11 @@
 
            	//Query to create table if it does not exist
            	$tablequery = "CREATE TABLE IF NOT EXISTS members (
-                'member_id' INT NOT NULL AUTO_INCREMENT,
-                'fname' varchar(20) NOT NULL,
-                'lname' varchar(20) NOT NULL,
-              	'email' varchar(255) NOT NULL,
-                'phone' varchar(255) NOT NULL,
+                member_id INT NOT NULL AUTO_INCREMENT,
+                fname varchar(20) NOT NULL,
+                lname varchar(20) NOT NULL,
+              	email varchar(255) NOT NULL,
+                phone varchar(255) NOT NULL,
                 PRIMARY KEY (member_id)
             );";
                     
@@ -112,6 +112,7 @@
 			{
 				while ($row = $result->fetch_assoc())
 				{
+					
 					echo "<table>";
 					echo "<tr><td>Member ID: </td><td>" . $row['member_id'] . "</td></tr>";
 					echo "<tr><td>First Name: </td><td>" . $row['fname'] . "</td></tr>";
@@ -119,6 +120,8 @@
 					echo "<tr><td>Email: </td><td>" . $row['email'] . "</td></tr>";
 					echo "<tr><td>Phone: </td><td>" . $row['phone'] . "</td></tr>";
 					echo "</table>";
+					echo "<a href='addsales.php?member_id=" . $row['member_id'] . "'>Add Sales For " . $row["fname"] . "</a>";
+					
 				}
 			}
 			else
