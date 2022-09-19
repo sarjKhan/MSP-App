@@ -121,7 +121,8 @@
 					echo "<tr><td>Phone: </td><td>" . $row['phone'] . "</td></tr>";
 					echo "</table>";
 					echo "<a href='addsales.php?member_id=" . $row['member_id'] . "'>Add Sales For " . $row["fname"] . "</a>";
-					
+					echo "<br/>";
+					echo "<a href='updatememberform.php?member_id=" . $row['member_id'] . "'>Update Member</a>";	
 				}
 			}
 			else

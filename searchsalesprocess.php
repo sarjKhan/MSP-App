@@ -117,6 +117,7 @@
 					echo "<tr><td>Item Quantity: </td><td>" . $row['item_quantity'] . "</td></tr>";
 					echo "<tr><td>Due Date: </td><td>" . $row['due_date'] . "</td></tr>";
 					echo "</table>";
+					echo "<a href='updatesalesform.php?sales_id=" . $row['sales_id'] . "'>Update Sales</a>";
 				}
 			}
 			else

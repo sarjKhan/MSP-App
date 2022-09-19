@@ -7,25 +7,25 @@
         <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
-        <h1>Update Sales Form</h1>
+        <h1>Update Member Form</h1>
         <?php
             require_once("settings.php");
 
             //Checking form input
-            if (isset($_GET['sales_id']))
+            if (isset($_GET['member_id']))
             {
                 $errorMsg = array();
-                $sales_id = $_GET['sales_id'];
+                $member_id = $_GET['member_id'];
 
                 //Validating sales id form input
-                if (is_numeric($sales_id))
+                if (is_numeric($member_id))
                 {
                     //Convert to integer
-                    $sales_id = (int) $sales_id;
+                    $member_id = (int) $member_id;
                 }
                 else
                 {
-                    $errorMsg[] = "Sales ID is not a number.";
+                    $errorMsg[] = "Member ID is not a number.";
                 }
 
 
@@ -39,7 +39,7 @@
                 }
 
                 //Query to check sales record in database
-                $querychecksales = "SELECT * FROM sales_records WHERE sales_id = $sales_id";
+                $querychecksales = "SELECT * FROM members WHERE member_id = $member_id";
 
                 //Executing query and getting result
                 $result = $conn->query($querychecksales);
@@ -57,20 +57,21 @@
                     while ($row = $result->fetch_assoc())
                     {
                         //Setting up form with values from database as values in form.
-                        echo "<form method='POST' action='updatesalesprocess.php'>";
-                        echo "<input type='hidden' name='sales_id' value='" . $row['sales_id'] . "' />";
-                        echo "<label for='member_id'>Member ID: </label>";
-                        echo "<input type='text' name='member_id' id='member_id' value='" . $row['member_id'] ."' />";
+                        echo "<form method='POST' action='updatememberprocess.php'>";
+                        echo "<input type='hidden' name='member_id' value='" . $row['member_id'] . "' />";
+                        echo "<label for='f_name'>First Name: </label>";
+                        echo "<input type='text' name='f_name' id='f_name' value='" . $row['fname'] ."' />";
                         echo "<br/>";
-                        echo "<label for='item_name'>Item Name:</label>";
-                        echo "<input type='text' name='item_name' id='item_name' value='" . $row['item_name'] . "' />";
+                        echo "<label for='l_name'>Last Name:</label>";
+                        echo "<input type='text' name='l_name' id='l_name' value='" . $row['lname'] . "' />";
                         echo "<br/>";
-                        echo "<label for='item_quantity'>Item Quantity:</label>";
-                        echo "<input type='text' name='item_quantity' id='item_quantity' value='". $row['item_quantity'] . "' />";
+                        echo "<label for='email'>Email:</label>";
+                        echo "<input type='text' name='email' id='email' value='". $row['email'] . "' />";
                         echo "<br/>";
-                        echo "<label for='date_sold'>Date Sold:</label>";
-                        echo "<input type='date' name='date_sold' id='date_sold' value='" . $row['due_date'] . "' />";
-                        echo "<input type='submit' name='Update Sales Record' value='Update Sales Record' />";
+                        echo "<label for='phone'>Phone:</label>";
+                        echo "<input type='text' name='phone' id='phone' value='" . $row['phone'] . "' />";
+                        echo "<br/>";
+                        echo "<input type='submit' name='Update Member Record' value='Update Member Record' />";
                         echo "</form>";
                     }
                 }
