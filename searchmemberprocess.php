@@ -111,7 +111,7 @@
 			if ($result->num_rows > 0)
 			{
 				echo "<table>";
-				echo "<tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th></tr>";
+				echo "<tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Update Member</th><th>Add Sales</th><th>Delete Member</th></tr>";
 				while ($row = $result->fetch_assoc())
 				{
 					echo "<tr>";
@@ -120,14 +120,12 @@
 					echo "<td>" . $row['lname'] . "</td>";
 					echo "<td>" . $row['email'] . "</td>";
 					echo "<td>" . $row['phone'] . "</td>";
-					echo "</tr>";
-					
-						
+					echo "<td><a href='updatememberform.php?member_id=" . $row['member_id'] . "'>Update Member</a></td>";
+					echo "<td><a href='add_sales.php?member_id=" . $row['member_id'] . "'>Add Sales For " . $row["fname"] . "</a></td>";
+					echo "<td><a href='deletememberform.php?member_id=" . $row['member_id'] . "'>Delete</a></td>";
+					echo "</tr>";	
 				}
 				echo "</table>";
-				echo "<br/>";
-					echo "<a href='updatememberform.php?member_id=" . $row['member_id'] . "'>Update Member</a>";
-					echo "<a href='add_sales.php?member_id=" . $row['member_id'] . "'>Add Sales For " . $row["fname"] . "</a>";
 			}
 			else
 			{
