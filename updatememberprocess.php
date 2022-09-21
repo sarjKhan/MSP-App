@@ -110,6 +110,7 @@
                         lname varchar(20) NOT NULL,
                         email varchar(255) NOT NULL,
                         phone varchar(255) NOT NULL,
+                        active BOOLEAN NOT NULL,
                         PRIMARY KEY (member_id)
                     );";
 

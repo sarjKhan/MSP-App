@@ -39,15 +39,16 @@
 	                lname varchar(20) NOT NULL,
 	              	email varchar(255) NOT NULL,
 	                phone varchar(255) NOT NULL,
+	                active BOOLEAN NOT NULL,
 	                PRIMARY KEY (member_id)
 	            );";
 	                    
 	            //Execute table creation query
 	            $conn->query($tablequery);
 
-	            $selectquery = "DELETE FROM `members` WHERE `member_id`=$member_id";
+	            $deletequery = "UPDATE `members` SET `active`=FALSE WHERE `member_id`=$member_id";
 
-	            if ($conn->query($selectquery) === TRUE)
+	            if ($conn->query($deletequery) === TRUE)
 	            {
 	            	echo "<p>Member successfully deleted.</p>";
 	            }
