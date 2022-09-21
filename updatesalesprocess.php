@@ -146,10 +146,10 @@
                 }
                 
                 //Validating date
-                $date_sold = $_POST['date_sold'];
-                if (empty($date_sold))
+                $due_date = $_POST['due_date'];
+                if (empty($due_date))
                 {
-                    $errorMsg[] = "Date sold has not been set.";
+                    $errorMsg[] = "Due date has not been set.";
                 }
 
                 if (sizeof($errorMsg) == 0)
@@ -165,14 +165,12 @@
                     }
 
                     //Query to create table if it does not exist
-                    //Transaction id and datetime sold will be entered manually by user in form.
                     $tablequery = "CREATE TABLE IF NOT EXISTS sales_records (
                         sales_id INT NOT NULL AUTO_INCREMENT,
                         member_id INT NOT NULL,
-                        transaction_id INT NOT NULL,
                         item_name varchar(20) NOT NULL,
                         item_quantity INT NOT NULL,
-                        date_sold DATE NOT NULL,
+                        due_date DATE NOT NULL,
                         PRIMARY KEY (sales_id),
                         FOREIGN KEY (member_id) REFERENCES members(member_id)
                     );";
@@ -183,7 +181,7 @@
                         echo "<p>Error with database: " . $conn->error . "</p>";
                     }
 
-                    $updatquery = "UPDATE `sales_records` SET `member_id` = $member_id , `transaction_id` = $transaction_id , `item_name` = '$item_name' , `item_quantity` = $item_quantity , `date_sold` = $date_sold WHERE `sales_id` = $sales_id;";
+                    $updatquery = "UPDATE `sales_records` SET `member_id` = $member_id , `transaction_id` = $transaction_id , `item_name` = '$item_name' , `item_quantity` = $item_quantity , `due_date` = $due_date WHERE `sales_id` = $sales_id;";
 
                     if ($conn->query($updatquery) === TRUE)
                     {

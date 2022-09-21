@@ -103,7 +103,7 @@
             //Execute table creation query
             $conn->query($tablequery);
 
-			$selectquery .= " active=TRUE";
+			$selectquery = substr($selectquery, 0, -5);
 
 			$result = $conn->query($selectquery);
 
