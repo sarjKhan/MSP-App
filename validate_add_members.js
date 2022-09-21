@@ -4,7 +4,7 @@ var fnameError = document.getElementById('fname_error');
 var lnameError = document.getElementById('lname_error');
 var phoneError= document.getElementById('phone_error');
 var emailError = document.getElementById('email_error');
-var submitError = document.getElementById('submit-error')
+var submitError = document.getElementById('submit_error')
 
 function validateFName(){
 	var fname = document.getElementById('f_name').value;
@@ -71,7 +71,7 @@ function validateEmail(){
 function validateForm(){
 	if (!validateFName() || !validateLName() || !validatePhone() || !validateEmail()){
 		submitError.style.display = 'block';
-		submitError.innerHTML = 'Please fix errors to submit';
+		submitError.innerHTML = '<br>Please fix errors to submit';
 		setTimeout(() => {
 			submitError.style.display ='none';
 		}, 2500);
