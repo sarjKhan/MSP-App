@@ -107,18 +107,23 @@
 			//Check if any rows in results
 			if ($result->num_rows > 0)
 			{
+				echo "<h1>Search Sales Result:</h1>";
+				echo "<table>";
+				echo "<tr><th>Sales ID:</th><th>Member ID:</th><th>Item Name:</th><th>Item Quantity:</th><th>Due Date:</th><th>Update:</th><th>Delete:</th></tr>";
 				//Iterating through rows and adding to table.
 				while ($row = $result->fetch_assoc())
 				{
-					echo "<table>";
-					echo "<tr><td>Sales ID: </td><td>" . $row['sales_id'] . "</td></tr>";
-					echo "<tr><td>Member ID: </td><td>" . $row['member_id'] . "</td></tr>";
-					echo "<tr><td>Item Name: </td><td>" . $row['item_name'] . "</td></tr>";
-					echo "<tr><td>Item Quantity: </td><td>" . $row['item_quantity'] . "</td></tr>";
-					echo "<tr><td>Due Date: </td><td>" . $row['due_date'] . "</td></tr>";
-					echo "</table>";
-					echo "<a href='updatesalesform.php?sales_id=" . $row['sales_id'] . "'>Update Sales</a>";
+					echo "<tr>";
+					echo "<td>" . $row['sales_id'] . "</td>";
+					echo "<td>" . $row['member_id'] . "</td>";
+					echo "<td>" . $row['item_name'] . "</td>";
+					echo "<td>" . $row['item_quantity'] . "</td>";
+					echo "<td>" . $row['due_date'] . "</td>";
+					echo "<td><a href='updatesalesform.php?sales_id=" . $row['sales_id'] . "'>Update</a></td>";
+					echo "<td><a href='deletesalesform.php?sales_id=" . $row['sales_id'] . "'>Delete</a></td>";
+					echo "</tr>";
 				}
+				echo "</table>";
 			}
 			else
 			{
