@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="Title" content="GotoGro Memeber Management Sysytem" />
-    <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
-    <title>Search Member</title>
+    <meta name="Authors" content="Sartaj Khan, " />
+    <title> add_members</title>
     <link rel="stylesheet" href="styles.css" />  
     <script defer src="./validate_search_member.js"></script>
     <script src="https://kit.fontawesome.com/5f307a1918.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <h1>GotoGro Memeber Management System</h1>
-    <form id="members_form" method="post" action="searchmemberprocess.php">
+    <form id="members_form" method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
 
         <fieldset class="add_form">
             <legend>Search Member:</legend>
             <div>
                 <div class="input">
-                    <label for="member_id">Member ID:&nbsp;</label><br>
-                    <input id="member_id" type="number" name="member_id" placeholder="XXXX" onkeyup="validateMemId()">
+                    <label for="mem_id">Member ID:&nbsp;</label><br>
+                    <input id="mem_id" type="number" name="ID" placeholder="XXXX" onkeyup="validateMemId()">
                     <span id="mem_id_error"></span>
                 </div>
                 <div class="input">
@@ -51,4 +53,5 @@
         <p class="back">&larr;&nbsp;Go Back</p>
     </a>
 </body>
+
 </html>

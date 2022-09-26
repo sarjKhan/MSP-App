@@ -11,7 +11,7 @@
         <h1>GotoGro Memeber Management System</h1>
         <form>
             <fieldset class="add_form">
-                <legend>Search:</legend>
+                <legend>Edit:</legend>
                 <div>
                     <div class="input">
                         <label for="order_id">Order ID:&nbsp;</label><br>
@@ -30,10 +30,14 @@
                         <input type="text" name="product" placeholder="Name of product">
                     </div>
                     <div class="input">
+                        <label for="qnt">Quantity:&nbsp;</label><br>
+                        <input type="number" name="qnt" min=0 placeholder="Enter Quantity">
+                    </div>
+                    <div class="input">
                         <label for="due_date">Due Date:&nbsp;</label><br>
                         <input type="date" name="due_date">
                     </div>
-                    <button type="submit" class="button">Search</button>
+                    <button type="submit" class="button">Confirm Changes</button>
                     <button type="reset" class="button">Reset</button>
                 </div>
             </fieldset>

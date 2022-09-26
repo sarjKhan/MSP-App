@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8"/>
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
-    <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
+   	<meta name="Authors" content="Sartaj Khan, Eddie Taing"/>
     <link rel="stylesheet" href="styles.css"/>
-    <title>Search Sales Results</title>
 </head>
 <body>
 	<?php
