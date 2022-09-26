@@ -70,20 +70,23 @@
                 {
                     //Setting up form with values from database as values in form.
                     echo "<form id='members_form' method='POST' action='updatememberprocess.php'>";
+                    echo "<fieldset class='add_form'>";
+                    echo "<legend>Update Member Details:</legend>";
                     echo "<input type='hidden' name='member_id' value='" . $row['member_id'] . "' />";
-                    echo "<label for='f_name'>First Name: </label>";
+                    echo "<label for='f_name'>First Name: </label><br>";
                     echo "<input type='text' name='f_name' id='f_name' value='" . $row['fname'] ."' />";
                     echo "<br/>";
-                    echo "<label for='l_name'>Last Name:</label>";
+                    echo "<label for='l_name'>Last Name:</label><br>";
                     echo "<input type='text' name='l_name' id='l_name' value='" . $row['lname'] . "' />";
                     echo "<br/>";
-                    echo "<label for='email'>Email:</label>";
+                    echo "<label for='email'>Email:</label><br>";
                     echo "<input type='text' name='email' id='email' value='". $row['email'] . "' />";
                     echo "<br/>";
-                    echo "<label for='phone'>Phone:</label>";
+                    echo "<label for='phone'>Phone:</label><br>";
                     echo "<input type='text' name='phone' id='phone' value='" . $row['phone'] . "' />";
                     echo "<br/>";
-                    echo "<input type='submit' name='Update Member Record' value='Update Member Record' />";
+                    echo "<button type='submit' name='Update Member Record' class='button'>Save Changes</button>";
+                    echo "</fieldset>";
                     echo "</form>";
                 }
             }
