@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8"/>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
-   	<meta name="Authors" content="Sartaj Khan, Eddie Taing"/>
+    <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
     <link rel="stylesheet" href="styles.css"/>
+    <title>Search Sales Results</title>
 </head>
 <body>
+	<h1>Search Sales Result:</h1>
 	<?php
 		require_once("settings.php");
 
@@ -107,7 +110,6 @@
 			//Check if any rows in results
 			if ($result->num_rows > 0)
 			{
-				echo "<h1>Search Sales Result:</h1>";
 				echo "<table>";
 				echo "<tr><th>Sales ID:</th><th>Member ID:</th><th>Item Name:</th><th>Item Quantity:</th><th>Due Date:</th><th>Update:</th><th>Delete:</th></tr>";
 				//Iterating through rows and adding to table.
@@ -137,5 +139,6 @@
 			echo "<p>No Search Terms Have Been Added</p>";
 		}
 	?>
+	<a href="search_sales.html" class="choose_back"><p class="back">&larr;&nbsp;Go Back</p></a>
 </body>
 </html>

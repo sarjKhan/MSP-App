@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8"/>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
-   	<meta name="Authors" content="Sartaj Khan, Eddie Taing"/>
+    <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
     <link rel="stylesheet" href="styles.css"/>
+    <title>Search Member Results</title>
 </head>
 <body>
+	<h1>Search Member Results:</h1>
 	<?php
 		require_once("settings.php");
 
@@ -121,7 +124,7 @@
 					echo "<td>" . $row['email'] . "</td>";
 					echo "<td>" . $row['phone'] . "</td>";
 					echo "<td><a href='updatememberform.php?member_id=" . $row['member_id'] . "'>Update Member</a></td>";
-					echo "<td><a href='add_sales.php?member_id=" . $row['member_id'] . "'>Add Sales For " . $row["fname"] . "</a></td>";
+					echo "<td><a href='add_sales.php?member_id=" . $row['member_id'] . "'>Add Sales Record</a></td>";
 					echo "<td><a href='deletememberform.php?member_id=" . $row['member_id'] . "'>Delete</a></td>";
 					echo "</tr>";	
 				}
@@ -139,5 +142,6 @@
 			echo "<p>No Search Terms Have Been Added</p>";
 		}
 	?>
+	<a href="search_members.html" class="choose_back"><p class="back">&larr;&nbsp;Go Back</p></a>
 </body>
 </html>
