@@ -5,7 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
-    <link rel="stylesheet" href="styles.css"/>
+    <style type="text/css">
+		/*Styles for php echos*/
+		@font-face {
+			font-family: 'Avenir';
+			src: url('../fonts/Avenir.eot?#iefix') format('embedded-opentype'), url('../fonts/Avenir.woff') format('woff'), url('../fonts/Avenir.ttf') format('truetype'), url('../fonts/Avenir.svg#Avenir') format('svg');
+			}
+		* {
+			font-family: 'Avenir', Helvetica, sans-serif;
+			color: white;
+		}
+		html {
+			background-color: #152733;
+			color: white;
+			display: flex;
+			justify-content: center;
+			text-align: center;
+		}
+		.update_php {
+			color: greenyellow;
+		}
+		.update_php:hover {
+			text-decoration: underline greenyellow;
+		}
+
+		.delete_php {
+			color: red;
+		}
+
+		.delete_php:hover {
+			text-decoration: underline red;
+		}
+	</style>
     <title>Search Member Results</title>
 </head>
 <body>
@@ -123,9 +154,9 @@
 					echo "<td>" . $row['lname'] . "</td>";
 					echo "<td>" . $row['email'] . "</td>";
 					echo "<td>" . $row['phone'] . "</td>";
-					echo "<td><a href='updatememberform.php?member_id=" . $row['member_id'] . "'>Update Member</a></td>";
-					echo "<td><a href='add_sales.php?member_id=" . $row['member_id'] . "'>Add Sales Record</a></td>";
-					echo "<td><a href='deletememberform.php?member_id=" . $row['member_id'] . "'>Delete</a></td>";
+					echo "<td><a href='updatememberform.php?member_id=" . $row['member_id'] . "' class='update_php'>Update Member</a></td>";
+					echo "<td><a href='add_sales.php?member_id=" . $row['member_id'] . "' class='add_php'>Add Sales Record</a></td>";
+					echo "<td><a href='deletememberform.php?member_id=" . $row['member_id'] . "' class='delete_php'>Delete</a></td>";
 					echo "</tr>";	
 				}
 				echo "</table>";
