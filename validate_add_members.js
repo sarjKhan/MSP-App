@@ -69,22 +69,18 @@ function validateEmail(){
 
 function validateForm(){
 	var submitError = document.getElementById('submit_error');
-	form.addEventListener('submit', function (event) {
+
 		if (!validateFName() || !validateLName() || !validatePhone() || !validateEmail()){
 			submitError.style.display = 'block';
 			submitError.innerHTML = '<br>Please fix errors to submit';
-			if (event.submitter.matches('#add_submit')){
-				event.preventDefault();	
-			}
-			
+				
 			setTimeout(() => {
 				submitError.style.display ='none';
-			}, 2500);
-			return false;
-		}
-	});
-
+				}, 3500);
+		return false;
+	} 		
 }
+
 
 /*
 form.addEventListener('submit', (e) => {
