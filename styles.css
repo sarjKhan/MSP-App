@@ -179,8 +179,8 @@ a:link, a:visited {
   }
 
   .topnav a:hover {
-    text-decoration: underline;
     color: white;
+    transform: scale(1.1);
   }
 
   /*
