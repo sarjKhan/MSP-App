@@ -8,10 +8,10 @@
 }
 
 
+
 html {
     background-color: #152733;
     color: white;
-    display: flex;
     justify-content: center;
     text-align: center;
 }
@@ -161,5 +161,40 @@ a:link, a:visited {
 .input i{
     color:seagreen;
 }
+
+
+/*  nav components  */
+
+.topnav {
+    overflow: hidden;
+  }
+
+  .topnav a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 2px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .topnav a:hover {
+    text-decoration: underline;
+    color: white;
+  }
+
+  /*
+  .topnav a.active {
+    text-decoration: underline;
+    color: white;
+  }
+*/
+
+  #logo{
+    float: left;
+    cursor: pointer;
+  }
+
+
 
 

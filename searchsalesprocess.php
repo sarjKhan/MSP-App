@@ -28,6 +28,14 @@
 				$criteriacount++;
 			}
 		}
+		
+		//Check if emtpy -> return all results (ADDED BY CONRAD)
+		if ($criteriacount == 0)
+		{		
+				//Adding item name to query
+				$selectquery .= " ";
+				$criteriacount++;	
+		}
 
 		//Checking if item name was set
 		if (isset($_POST['item_name']))

@@ -12,11 +12,16 @@
     <script src="https://kit.fontawesome.com/5f307a1918.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="topnav">
+        <img onclick="document.location.href='index.html'" id="logo" src="images/grocery icon.png" alt="logo" width="100" height="70">
+        <a class="active" href="index.html">Home</a>
+    </div>
+
     <h1>GotoGro Memeber Management System</h1>
     <form id="members_form" method="post" action="addmemberprocess.php">
 
         <fieldset class="add_form">
-            <legend>Add Member:</legend>
+            <legend>Add Member:</legend><br>
             <div>
                 <div class="input">
                     <label for="f_name">First Name:&nbsp;</label><br>
@@ -24,18 +29,18 @@
                     <span id="fname_error"></span>
                 </div>
                 <div class="input">
-                    <label for="l_name">Last Name:&nbsp;</label><br>
+                    <br><label for="l_name">Last Name:&nbsp;</label><br>
                     <input id="l_name" type="text" name="l_name" placeholder="Smith" onkeyup="validateLName()">
                     <span id="lname_error"></span>
                 </div>
                 <div class="input">
-                    <label for="email">Email:&nbsp;</label><br>
+                    <br><label for="email">Email:&nbsp;</label><br>
                     <input id="email" type="email" name="email" min="0" placeholder="abcd@domain.com" onkeyup="validateEmail()">
                     <span id="email_error"></span>
                 </div>
                 <div class="input">
-                    <label for="phone">Phone Number:&nbsp;</label><br>
-                    <input id="phone" type="text" name="phone" placeholder="xxxx xxx xxx" onkeyup="validatePhone()">
+                    <br><label for="phone">Phone Number:&nbsp;</label><br>
+                    <input id="phone" type="text" name="phone" placeholder="xxxxxxxxxx" onkeyup="validatePhone()">
                     <span id="phone_error"></span>
                 </div>
                 <span id="submit_error"></span>

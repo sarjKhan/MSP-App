@@ -10,25 +10,30 @@
     <title>Search Sales</title>
 </head>
 <body>
+    <div class="topnav">
+        <img onclick="document.location.href='index.html'" id="logo" src="images/grocery icon.png" alt="logo" width="100" height="70">
+        <a class="active" href="index.html">Home</a>
+    </div>
+
     <h1>GotoGro Memeber Management System</h1>
     <form method="POST" action="searchsalesprocess.php">
         <fieldset class="add_form">
             <legend>Search:</legend>
             <div>
                 <div class="input">
-                    <label for="member_id">Member ID:&nbsp;</label><br>
+                    <br><label for="member_id">Member ID:&nbsp;</label><br>
                     <input type="number" name="member_id" id="member_id"placeholder="xxxxxxx"/>
                 </div>
                 <div class="input">
-                    <label for="item_name">Item Name:&nbsp;</label><br>
+                    <br><label for="item_name">Item Name:&nbsp;</label><br>
                     <input type="text" name="item_name" id="item_name" placeholder="Name of item"/>
                 </div>
                 <div class="input">
-                    <label for="item_quantity">Item Quantity:&nbsp;</label><br>
+                    <br><label for="item_quantity">Item Quantity:&nbsp;</label><br>
                     <input type="number" name="item_quantity" id="item_quantity" placeholder="xx"/>
                 </div>
                 <div class="input">
-                    <label for="due_date">Due Date:&nbsp;</label><br>
+                    <br><label for="due_date">Due Date:&nbsp;</label><br>
                     <input type="date" name="due_date" id="due_date"/>
                 </div>
                 <button type="submit" class="button">Search</button>
