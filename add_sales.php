@@ -13,7 +13,7 @@
 	<form action="addsalesprocess.php" method="POST">
 		<fieldset class="add_form">
 			<legend>Add Sales: </legend>
-			<label>Member ID:</label><br>
+			<label>Customer number:</label><br>
 			<?php
 				if (isset($_GET['member_id'])) 
 				{

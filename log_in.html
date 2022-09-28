@@ -7,18 +7,26 @@
         <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
         <title>Log In</title>
         <link rel="stylesheet" href="styles.css" />
+        <script src="./features.js"></script>
     </head>
     <body>
-        <h1>Welcome!</h1>
-        <p>Please enter your log in details to continue: </p>
-        <form>
-            <div>
+        
+        <h1>GoToGro Member login</h1>
+        
+        <form action="index.html">
+            <fieldset class="add_form">
+            <div class="input">
                 <label for="usrname">Username: </label>
                 <input type="text" name="usrname" placeholder="abcd1234">
+            </div>
+            <div>
                 <label for="psswrd">Password: </label>
                 <input type="password" name="psswrd" placeholder=" ***********">
             </div>
-            <button type="submit" class="button">Log In</button>
+            <button id ="login_button" type="submit" class="button">Log In</button>
+            <div onclick = "updates()" id ="forgotpw"><u> Forgot password?</u></div>
+        </fieldset>
         </form>
+    
     </body>
 </html>
