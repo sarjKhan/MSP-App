@@ -28,12 +28,12 @@
 			
 			<br/>
 			<div class="input">
-				<label for="product">Product Name:&nbsp;</label><br>
-				<input type="text" name="product" placeholder="Name of product">
+				<label for="item_name">Item Name:&nbsp;</label><br>
+				<input type="text" name="item_name" placeholder="Name of product">
 			</div>
 			<div class="input">
-				<label for="qnt">Quantity:&nbsp;</label><br>
-				<input type="number" name="qnt" min=0 placeholder="Enter Quantity">
+				<label for="item_quantity">Quantity:&nbsp;</label><br>
+				<input type="number" name="item_quantity" min=0 placeholder="Enter Quantity">
 			</div>
 			<div class="input">
 				<label for="due_date">Due Date:&nbsp;</label><br>
