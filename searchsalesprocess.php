@@ -84,32 +84,34 @@
             }
 		}
 
+		//Creating database connection
+		$conn = new mysqli($host, $user, $pswd, $db);
+
+		//Check if error with connection
+        if ($conn->connect_errno)
+        {
+            echo "<p>Failed to connect to database: " . $conn->connect_error . "</p>";
+            exit();
+        }
+
+        $tablequery = "CREATE TABLE IF NOT EXISTS sales_records (
+            sales_id INT NOT NULL AUTO_INCREMENT,
+            member_id INT NOT NULL,
+            item_name varchar(20) NOT NULL,
+            item_quantity INT NOT NULL,
+            due_date DATE NOT NULL,
+            PRIMARY KEY (sales_id),
+            FOREIGN KEY (member_id) REFERENCES members(member_id)
+        );";
+                    
+        //Execute table creation query
+        $conn->query($tablequery);
+
+        $searchresultsarray = array();
+
 		//Checking if any search was added.
 		if ($criteriacount > 0)
 		{
-			//Creating database connection
-			$conn = new mysqli($host, $user, $pswd, $db);
-
-			//Check if error with connection
-           	if ($conn->connect_errno)
-            {
-             	echo "<p>Failed to connect to database: " . $conn->connect_error . "</p>";
-                exit();
-            }
-
-           	$tablequery = "CREATE TABLE IF NOT EXISTS sales_records (
-                sales_id INT NOT NULL AUTO_INCREMENT,
-                member_id INT NOT NULL,
-                item_name varchar(20) NOT NULL,
-                item_quantity INT NOT NULL,
-                due_date DATE NOT NULL,
-                PRIMARY KEY (sales_id),
-               	FOREIGN KEY (member_id) REFERENCES members(member_id)
-            );";
-                    
-            //Execute table creation query
-            $conn->query($tablequery);
-
             //https://stackoverflow.com/questions/4915753/how-can-i-remove-three-characters-at-the-end-of-a-string-in-php
 			$selectquery = substr($selectquery, 0, -5);
 
@@ -118,22 +120,11 @@
 			//Check if any rows in results
 			if ($result->num_rows > 0)
 			{
-				echo "<table>";
-				echo "<tr><th>Sales ID:</th><th>Member ID:</th><th>Item Name:</th><th>Item Quantity:</th><th>Due Date:</th><th>Update:</th><th>Delete:</th></tr>";
 				//Iterating through rows and adding to table.
 				while ($row = $result->fetch_assoc())
 				{
-					echo "<tr>";
-					echo "<td>" . $row['sales_id'] . "</td>";
-					echo "<td>" . $row['member_id'] . "</td>";
-					echo "<td>" . $row['item_name'] . "</td>";
-					echo "<td>" . $row['item_quantity'] . "</td>";
-					echo "<td>" . $row['due_date'] . "</td>";
-					echo "<td><a href='updatesalesform.php?sales_id=" . $row['sales_id'] . "'>Update</a></td>";
-					echo "<td><a href='deletesalesform.php?sales_id=" . $row['sales_id'] . "'>Delete</a></td>";
-					echo "</tr>";
+					$searchresultsarray[] = $row;					
 				}
-				echo "</table>";
 			}
 			else
 			{
@@ -144,7 +135,45 @@
 		}
 		else
 		{
-			echo "<p>No Search Terms Have Been Added</p>";
+			//If no search criteria get all data from sales records table
+			$selectquery = "SELECT * FROM sales_records";
+			$result = $conn->query($selectquery);
+
+			//Check if any records.
+			if ($result->num_rows > 0)
+			{
+				while ($row = $result->fetch_assoc())
+				{
+					//Put row into array to display.
+					$searchresultsarray[] = $row;
+				}
+			}
+			else
+			{
+				"<p>0 results. " . $conn->error . "</p>";
+
+			}
+		}
+
+		if (sizeof($searchresultsarray) > 0)
+		{
+			echo "<table>";
+			echo "<tr><th>Sales ID:</th><th>Member ID:</th><th>Item Name:</th><th>Item Quantity:</th><th>Due Date:</th><th>Update:</th><th>Delete:</th></tr>";
+
+			foreach ($searchresultsarray as $searchresult)
+			{
+				echo "<tr>";
+				echo "<td>" . $searchresult['sales_id'] . "</td>";
+				echo "<td>" . $searchresult['member_id'] . "</td>";
+				echo "<td>" . $searchresult['item_name'] . "</td>";
+				echo "<td>" . $searchresult['item_quantity'] . "</td>";
+				echo "<td>" . $searchresult['due_date'] . "</td>";
+				echo "<td><a href='updatesalesform.php?sales_id=" . $searchresult['sales_id'] . "'>Update</a></td>";
+				echo "<td><a href='deletesalesform.php?sales_id=" . $searchresult['sales_id'] . "'>Delete</a></td>";
+				echo "</tr>";
+			}
+
+			echo "</table>";
 		}
 	?>
 	<a href="search_sales.html" class="choose_back"><p class="back">&larr;&nbsp;Go Back</p></a>
