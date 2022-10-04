@@ -9,6 +9,7 @@
     <title>Search Sales Results</title>
 </head>
 <body>
+<?php include 'nav.php' ?>
 	<h1>Search Sales Result:</h1>
 	<?php
 		require_once("settings.php");
@@ -177,5 +178,6 @@
 		}
 	?>
 	<a href="search_sales.html" class="choose_back"><p class="back">&larr;&nbsp;Go Back</p></a>
+	
 </body>
 </html>

@@ -9,6 +9,7 @@
     <title>Delete Sales Process</title>
 </head>
 <body>
+<?php include 'nav.php' ?>
 	<?php
 		require_once("settings.php");
 
@@ -61,5 +62,6 @@
 			echo "<p>No sales record to delete</p>";
 		}
 	?>
+	<div onclick="history.back()"class="back" id ="historicback">&larr;&nbsp;Go Back</div>
 </body>
 </html>

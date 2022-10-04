@@ -9,6 +9,7 @@
     <title>Update Sales Result</title>
 </head>
 <body>
+<?php include 'nav.php' ?>
     <h1>Update Sales Form</h1>
     <?php
         require_once("settings.php");
@@ -192,5 +193,6 @@
             echo "<p>Form inputs have not been entered.</p>";
         }
     ?>
+    <div onclick="history.back()"class="back" id ="historicback">&larr;&nbsp;Go Back</div>
 </body>
 </html>

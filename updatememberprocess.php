@@ -9,6 +9,7 @@
     <title>Search Member Results</title>
 </head>
 <body>
+<?php include 'nav.php' ?>
     <h1>Update Sales Form</h1>
     <?php
         require_once("settings.php");

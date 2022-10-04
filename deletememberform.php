@@ -9,6 +9,7 @@
     <title>Delete Member</title>
 </head>
 <body>
+<?php include 'nav.php' ?>
 	<h1>Delete Member Confirm</h1>
 	<?php
 		require_once("settings.php");
@@ -84,5 +85,6 @@
 			echo "<p>Member ID has not been set.</p>";
 		}
 	?>
+	<div onclick="history.back()"class="back" id ="historicback">&larr;&nbsp;Go Back</div>
 </body>
 </html>

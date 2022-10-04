@@ -9,6 +9,7 @@
     <title>Add Member Process</title>
 </head>
 <body>
+<?php include 'nav.php' ?>
     <?php
         require_once("settings.php");
 
@@ -105,7 +106,7 @@
                 //Executes insert query and checks results from query.
                 if ($conn->query($insertquery) === TRUE)
                 {
-                    echo "<p>New member has been added to the system</p>";
+                    echo "<p>$fname $lname has been added to the system</p>";
                 }
                 else
                 {
@@ -123,5 +124,6 @@
             echo "<p>Input has not been entered.</p>";
         }
     ?>
+    <div onclick="history.back()"class="back" id ="historicback">&larr;&nbsp;Go Back</div>
 </body>
 </html>

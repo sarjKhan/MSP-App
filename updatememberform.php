@@ -9,6 +9,7 @@
     <title>Update Member Form</title>
 </head>
 <body>
+<?php include 'nav.php' ?>
     <h1>Update Member Form</h1>
     <?php
         require_once("settings.php");
@@ -109,5 +110,6 @@
             echo "<p>No form input</p>";
         }
     ?>
+    <div onclick="history.back()"class="back" id ="historicback">&larr;&nbsp;Go Back</div>
 </body>
 </html>

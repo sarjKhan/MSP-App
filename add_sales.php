@@ -9,11 +9,14 @@
     <title>Add Sales</title>
 </head>
 <body>
+<?php include 'nav.php' ?>
+
 	<h1>Add sales</h1>
 	<form action="addsalesprocess.php" method="POST">
 		<fieldset class="add_form">
 			<legend>Add Sales: </legend>
 			<label>Customer number:</label><br>
+			
 			<?php
 				if (isset($_GET['member_id'])) 
 				{
@@ -40,7 +43,13 @@
 				<input type="date" name="due_date" placeholder="xx/xx/xxxx">
 			</div>
 			<button type="submit" name="Submit" class="button">Add</button>
+			<div>
+				<a href ="search_members.html"> <br><u>Search for Member</a>
+			</div>
+			
 		</fieldset>
+		<div onclick="history.back()"class="back" id ="historicback">&larr;&nbsp;Go Back</div>
 	</form>
+	
 </body>
 </html>

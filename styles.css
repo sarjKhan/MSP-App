@@ -248,3 +248,8 @@ zoom: 150%;
     left: 150px;
     font-size: .8em;
 }
+
+#historicback:hover {
+    cursor: pointer;
+    
+}
