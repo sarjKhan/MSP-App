@@ -101,6 +101,7 @@
             item_name varchar(20) NOT NULL,
             item_quantity INT NOT NULL,
             due_date DATE NOT NULL,
+            active BOOLEAN NOT NULL,
             PRIMARY KEY (sales_id),
             FOREIGN KEY (member_id) REFERENCES members(member_id)
         );";
@@ -114,7 +115,7 @@
 		if ($criteriacount > 0)
 		{
             //https://stackoverflow.com/questions/4915753/how-can-i-remove-three-characters-at-the-end-of-a-string-in-php
-			$selectquery = substr($selectquery, 0, -5);
+			$selectquery .= " active = TRUE";
 
 			$result = $conn->query($selectquery);
 

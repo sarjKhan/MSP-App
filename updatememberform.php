@@ -48,18 +48,19 @@
                 lname varchar(20) NOT NULL,
                 email varchar(255) NOT NULL,
                 phone varchar(255) NOT NULL,
+                active BOOLEAN NOT NULL,
                 PRIMARY KEY (member_id)
             );";
 
             //Query to check sales record in database
-            $querychecksales = "SELECT * FROM members WHERE member_id = $member_id";
+            $querychecksales = "SELECT * FROM members WHERE member_id = $member_id AND active = TRUE";
 
             //Executing query and getting result
             $result = $conn->query($querychecksales);
 
             if ($result->num_rows == 0) 
             {
-                $errorMsg[] = "Sales record with ID $sales_id does not exist.";
+                $errorMsg[] = "Sales record with ID $sales_id does not exist or is inactive.";
             }
 
             //Check if no errors

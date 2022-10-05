@@ -45,6 +45,7 @@
 	                lname varchar(20) NOT NULL,
 	              	email varchar(255) NOT NULL,
 	                phone varchar(255) NOT NULL,
+	                active BOOLEAN NOT NULL,
 	                PRIMARY KEY (member_id)
 	            );";
 	                    
@@ -57,21 +58,27 @@
 
 	            if ($result->num_rows === 1)
 	            {
-
 	            	while ($row = $result->fetch_assoc())
 	            	{
-	            		echo "<table>";
-	            		echo "<tr><td>Member ID:</td><td>" . $row['member_id'] ."</td></tr>";
-	            		echo "<tr><td>First Name:</td><td>" . $row['fname'] ."</td></tr>";
-	            		echo "<tr><td>Last Name:</td><td>" . $row['lname'] ."</td></tr>";
-	            		echo "<tr><td>Email:</td><td>" . $row['email'] ."</td></tr>";
-	            		echo "<tr><td>Phone:</td><td>" . $row['phone'] ."</td></tr>";
-	            		echo "</table>";
-	            		//Setting up form with values from database as values in form.
-                        echo "<form method='POST' action='deletememberprocess.php'>";
-                        echo "<input type='hidden' name='member_id' value='" . $row['member_id'] . "' />";
-                        echo "<input type='submit' value='Delete' />";
-                        echo "</form>";
+	            		if ($row['active'] == TRUE)
+	            		{
+	            			echo "<table>";
+		            		echo "<tr><td>Member ID:</td><td>" . $row['member_id'] ."</td></tr>";
+		            		echo "<tr><td>First Name:</td><td>" . $row['fname'] ."</td></tr>";
+		            		echo "<tr><td>Last Name:</td><td>" . $row['lname'] ."</td></tr>";
+		            		echo "<tr><td>Email:</td><td>" . $row['email'] ."</td></tr>";
+		            		echo "<tr><td>Phone:</td><td>" . $row['phone'] ."</td></tr>";
+		            		echo "</table>";
+		            		//Setting up form with values from database as values in form.
+	                        echo "<form method='POST' action='deletememberprocess.php'>";
+	                        echo "<input type='hidden' name='member_id' value='" . $row['member_id'] . "' />";
+	                        echo "<input type='submit' value='Delete' />";
+	                        echo "</form>";
+	            		}
+	            		else
+	            		{
+	            			echo "<p>Record has already been deleted.</p>";
+	            		}
 	            	}
 	            }
 	            else

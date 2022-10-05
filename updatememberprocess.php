@@ -111,6 +111,7 @@
                     lname varchar(20) NOT NULL,
                     email varchar(255) NOT NULL,
                     phone varchar(255) NOT NULL,
+                    active BOOLEAN NOT NULL,
                     PRIMARY KEY (member_id)
                 );";
 
@@ -120,16 +121,34 @@
                     echo "<p>Error with database: " . $conn->error . "</p>";
                 }
 
-                $updatquery = "UPDATE `members` SET `member_id` = $member_id , `fname` = '$fname' , `lname` = '$lname' , `email` = '$email' , `phone` = '$phone' WHERE `member_id` = $member_id;";
+                $checkactivity = "SELECT active FROM members WHERE member_id = $member_id";
+                $activity = $conn->query($checkactivity);
 
-                if ($conn->query($updatquery) === TRUE)
+                if ($activity->num_rows > 0)
                 {
-                    echo "<p>Record updated successfully.</p>";
+                    $row = $activity->fetch_assoc();
+                    if($row['active'] == TRUE)
+                    {
+                        $updatquery = "UPDATE `members` SET `member_id` = $member_id , `fname` = '$fname' , `lname` = '$lname' , `email` = '$email' , `phone` = '$phone' WHERE `member_id` = $member_id AND `active` = TRUE;";
+
+                        if ($conn->query($updatquery) === TRUE)
+                        {
+                            echo "<p>Record updated successfully.</p>";
+                        }
+                        else
+                        {
+                            echo "<p>Error with updating record. " . $conn->error . "</p>";
+                        }
+                    }
+                    else
+                    {
+                        echo "<p>Record has been deleted and cannot be updated.</p>";
+                    }
                 }
                 else
                 {
-                    echo "<p>Error with updating record: " . $conn->error . "</p>";
-                }
+                    echo "<p>Unable to find record</p>";
+                }              
             }
             else
             {

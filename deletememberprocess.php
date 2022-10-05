@@ -43,33 +43,45 @@
 	                lname varchar(20) NOT NULL,
 	              	email varchar(255) NOT NULL,
 	                phone varchar(255) NOT NULL,
+	                active BOOLEAN NOT NULL,
 	                PRIMARY KEY (member_id)
 	            );";
 	                    
 	            //Execute table creation query
 	            $conn->query($tablequery);
 
-	            $deleterecords = "DELETE FROM `sales_records` WHERE `member_id`=$member_id";
+	            $checkactivity = "SELECT active FROM members WHERE sales_id = $sales_id";
+	            $activity = $conn->query($checkactivity);
 
-	            if ($conn->query($deleterecords) === TRUE)
+	            if ($activity->num_rows > 0)
 	            {
-	            	echo "<p>Member's records have been deleted.</p>";
+	            	$row = $activity->fetch_assoc();
+	            	if ($row['active'] == TRUE)
+	            	{
+	            		$deleterecords = "UPDATE `members` SET `active` = FALSE WHERE `member_id` = $member_id";
+
+			            if ($conn->query($deleterecords) === TRUE)
+			            {
+			            	echo "<p>Member's records have been deleted.</p>";
+			            }
+			            else
+			            {
+			            	echo "<p>Unable";
+			            }
+	            	}
+	            	else
+	            	{
+	            		echo "<p>Member Has Already Been Deleted.</p>";
+	            	}
 	            }
 	            else
 	            {
-	            	echo "<p>Unable";
+	            	echo "<p>Unable to find member record.</p>";
 	            }
 
-	            $deletemember = "DELETE FROM `members` WHERE `member_id`=$member_id";
+	            
 
-	            if ($conn->query($deletemember) == TRUE)
-	            {
-	            	echo "<p>Member successfully deleted.</p>";
-	            }
-	            else
-	            {
-	            	echo "<p>Unable to delete member: ". $conn->error. "</p>";
-	            }
+	            $conn->close();
 			}
 		}
 		else

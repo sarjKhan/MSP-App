@@ -39,6 +39,7 @@
 	                item_name varchar(20) NOT NULL,
 	                item_quantity INT NOT NULL,
 	                due_date DATE NOT NULL,
+	                active BOOLEAN NOT NULL,
 	                PRIMARY KEY (sales_id),
 	               	FOREIGN KEY (member_id) REFERENCES members(member_id)
 	            );";
@@ -53,18 +54,25 @@
 	            {
 	            	while ($row = $result->fetch_assoc())
 	            	{
-	            		echo "<h1>Would you like to delete the following?</h1>";
-	            		echo "<table>";
-	            		echo "<tr><td>Sales ID:</td><td>" . $row['sales_id'] . "</td></tr>";
-	            		echo "<tr><td>Member ID:</td><td>" . $row['member_id'] . "</td></tr>";
-	            		echo "<tr><td>Item Name:</td><td>" . $row['item_name'] . "</td></tr>";
-	            		echo "<tr><td>Item Quantity:</td><td>" . $row['item_quantity'] . "</td></tr>";
-	            		echo "<tr><td>Due Date:</td><td>" . $row['due_date'] . "</td></tr>";
-	            		echo "</table>";
-	            		echo "<form method='POST' action='deletesalesprocess.php'>";
-	            		echo "<input type='hidden' name='sales_id' id='sales_id' value='".$row['sales_id']."'/>";
-	            		echo "<input type='submit' name='Delete' value='Delete Sales Record'/>";
-	            		echo "</form>";
+	            		if ($row['active'] == TRUE)
+	            		{
+	            			echo "<h1>Would you like to delete the following?</h1>";
+		            		echo "<table>";
+		            		echo "<tr><td>Sales ID:</td><td>" . $row['sales_id'] . "</td></tr>";
+		            		echo "<tr><td>Member ID:</td><td>" . $row['member_id'] . "</td></tr>";
+		            		echo "<tr><td>Item Name:</td><td>" . $row['item_name'] . "</td></tr>";
+		            		echo "<tr><td>Item Quantity:</td><td>" . $row['item_quantity'] . "</td></tr>";
+		            		echo "<tr><td>Due Date:</td><td>" . $row['due_date'] . "</td></tr>";
+		            		echo "</table>";
+		            		echo "<form method='POST' action='deletesalesprocess.php'>";
+		            		echo "<input type='hidden' name='sales_id' id='sales_id' value='".$row['sales_id']."'/>";
+		            		echo "<input type='submit' name='Delete' value='Delete Sales Record'/>";
+		            		echo "</form>";
+	            		}
+	            		else
+	            		{
+	            			echo "<p>Record has already been deleted.</p>";
+	            		}
 	            	}
 	            }
 	            else

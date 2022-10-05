@@ -156,6 +156,7 @@
                     item_name varchar(20) NOT NULL,
                     item_quantity INT NOT NULL,
                     due_date DATE NOT NULL,
+                    active BOOLEAN NOT NULL,
                     PRIMARY KEY (sales_id),
                     FOREIGN KEY (member_id) REFERENCES members(member_id)
                 );";
@@ -166,16 +167,33 @@
                     echo "<p>Error with database: " . $conn->error . "</p>";
                 }
 
-                $updatquery = "UPDATE `sales_records` SET `member_id` = $member_id , `item_name` = '$item_name' , `item_quantity` = $item_quantity , `due_date` = '$due_date' WHERE `sales_id` = $sales_id;";
-
-                if ($conn->query($updatquery) === TRUE)
+                $checkactivity = "SELECT active FROM sales_records WHERE sales_id = $sales_id";
+                $activity = $conn->query($checkactivity);
+                if ($activity->num_rows > 0)
                 {
-                    echo "<p>Record updated successfully.</p>";
+                    $row = $activity->fetch_assoc();
+                    if ($row['active'] == TRUE)
+                    {
+                        $updatquery = "UPDATE `sales_records` SET `member_id` = $member_id , `item_name` = '$item_name' , `item_quantity` = $item_quantity , `due_date` = '$due_date' WHERE `sales_id` = $sales_id";
+
+                        if ($conn->query($updatquery) === TRUE)
+                        {
+                            echo "<p>Record updated successfully.</p>";
+                        }
+                        else
+                        {
+                            echo "<p>Error with updating record: " . $conn->error . "</p>";
+                        }
+                    }
+                    else
+                    {
+                        echo "<p>Record has been deleted and cannot be updated.</p>";
+                    }
                 }
                 else
                 {
-                    echo "<p>Error with updating record: " . $conn->error . "</p>";
-                }
+                    echo "<p>Unable to find sales record</p>";
+                }             
             }
             else
             {

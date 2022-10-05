@@ -39,22 +39,43 @@
 	                item_name varchar(20) NOT NULL,
 	                item_quantity INT NOT NULL,
 	                due_date DATE NOT NULL,
+	                active BOOLEAN NOT NULL,
 	                PRIMARY KEY (sales_id),
 	               	FOREIGN KEY (member_id) REFERENCES members(member_id)
 	            );";
 	            
 	            $conn->query($tablequery);
 
-	            $deletequery = "DELETE FROM sales_records WHERE sales_id=$sales_id";
+	            $checkactivity = "SELECT active FROM sales_records WHERE sales_id = $sales_id";
+	            $activity = $conn->query($checkactivity);
 
-	            if ($conn->query($deletequery)===TRUE)
+	            if ($activity->num_rows > 0)
 	            {
-	            	echo "<p>Sales Record Successfully Deleted</p>";
+	            	$row = $activity->fetch_assoc();
+	            	if ($row['active'] == TRUE)
+	            	{
+	            		$deletequery = "UPDATE sales_records SET active=FALSE WHERE sales_id=$sales_id";
+
+			            if ($conn->query($deletequery)===TRUE)
+			            {
+			            	echo "<p>Sales Record Successfully Deleted</p>";
+			            }
+			            else
+			            {
+			            	echo "<p>No results</p>";
+			            }
+	            	}
+	            	else
+	            	{
+	            		echo "<p>Sales Record Has Already Been Deleted.</p>";
+	            	}
 	            }
 	            else
 	            {
-	            	echo "<p>No results</p>";
+	            	echo "<p>Unable to find sales record.</p>";
 	            }
+
+	            $conn->close();
 			}
 		}
 		else

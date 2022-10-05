@@ -135,6 +135,7 @@
                     item_name varchar(20) NOT NULL,
                     item_quantity INT NOT NULL,
                     due_date DATE NOT NULL,
+                    active BOOLEAN NOT NULL,
                     PRIMARY KEY (sales_id),
                     FOREIGN KEY (member_id) REFERENCES members(member_id)
                 );";
@@ -146,7 +147,7 @@
                 }
 
                 //Query to insert new sales into sales records table with form data.
-                $insertsales = "INSERT INTO `sales_records` (`member_id`,  `item_name`, `item_quantity`, `due_date`) VALUES ('$member_id', '$item_name', '$item_quantity', '$due_date');";
+                $insertsales = "INSERT INTO `sales_records` (`member_id`,  `item_name`, `item_quantity`, `due_date`, `active`) VALUES ('$member_id', '$item_name', '$item_quantity', '$due_date', TRUE);";
 
 
                 //Checking if query entered successfully.
