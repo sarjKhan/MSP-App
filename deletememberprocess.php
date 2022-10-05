@@ -50,7 +50,7 @@
 	            //Execute table creation query
 	            $conn->query($tablequery);
 
-	            $checkactivity = "SELECT active FROM members WHERE sales_id = $sales_id";
+	            $checkactivity = "SELECT active FROM members WHERE member_id = $member_id";
 	            $activity = $conn->query($checkactivity);
 
 	            if ($activity->num_rows > 0)
