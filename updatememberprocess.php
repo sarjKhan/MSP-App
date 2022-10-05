@@ -47,7 +47,7 @@
                 //Checking result from query
                 if ($result->num_rows == 0) 
                 {
-                    $errorMsg[] = "Sales record with ID $sales_id does not exist.";
+                    $errorMsg[] = "Sales record with ID $member_id does not exist.";
                 }
 
                 //Closing connection

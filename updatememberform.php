@@ -60,7 +60,7 @@
 
             if ($result->num_rows == 0) 
             {
-                $errorMsg[] = "Sales record with ID $sales_id does not exist or is inactive.";
+                $errorMsg[] = "Sales record with ID $member_id does not exist or is inactive.";
             }
 
             //Check if no errors
