@@ -72,29 +72,17 @@
 		$criteriacount = 0;
 
 		//Checking if member id was set
-		if (isset($_POST['member_id']))
+		if (isset($_POST['member_id']) && isset($_POST['item_name']) && isset($_POST['item_quantity']) && isset($_POST['due_date']))
 		{
 			$member_id = $_POST['member_id'];
 			//Validating member id
-			if (is_numeric($member_id) && $member_id)
+			if (is_numeric($member_id) && $member_id > 0)
 			{
 				//Adding member id to query
 				$selectquery .= "`member_id`=$member_id AND ";
 				$criteriacount++;
 			}
-		}
-		
-		//Check if emtpy -> return all results (ADDED BY CONRAD)
-		if ($criteriacount == 0)
-		{		
-				//Adding item name to query
-				$selectquery .= " ";
-				$criteriacount++;	
-		}
 
-		//Checking if item name was set
-		if (isset($_POST['item_name']))
-		{
 			$item_name = $_POST['item_name'];
 			$pattern = "/^[a-zA-Z0-9- ]+$/";
 			//Validating item name
@@ -104,11 +92,7 @@
 				$selectquery .= "`item_name`='$item_name' AND ";
 				$criteriacount++;
 			}
-		}
 
-		//Checking if item quantity was set
-		if (isset($_POST['item_quantity'])) 
-		{
 			$item_quantity = $_POST['item_quantity'];
 			//Validating item quantity
 			if (is_numeric($item_quantity))
@@ -120,12 +104,8 @@
             		$criteriacount++;
             	}    
             }
-		}
 
-		//Checking due date was set
-		if (isset($_POST['due_date'])) 
-		{
-			//Validating date
+            //Validating date
             $due_date = $_POST['due_date'];
             //https://stackoverflow.com/questions/30243775/get-date-from-input-form-within-php
             if (!empty($due_date))
@@ -138,6 +118,27 @@
                 $criteriacount++;
             }
 		}
+
+		if (isset($_GET['member_id']))
+		{
+			$member_id = $_GET['member_id'];
+
+			if (is_numeric($member_id) && $member_id > 0)
+			{
+				//Adding member id to query
+				$selectquery .= "`member_id`=$member_id AND";
+				$criteriacount++;
+			}
+		}
+		/*
+		//Check if emtpy -> return all results (ADDED BY CONRAD)
+		if ($criteriacount == 0)
+		{		
+				//Adding item name to query
+				$selectquery .= " ";
+				$criteriacount++;	
+		}
+		*/
 
 		//Creating database connection
 		$conn = new mysqli($host, $user, $pswd, $db);
@@ -170,7 +171,6 @@
 		{
             //https://stackoverflow.com/questions/4915753/how-can-i-remove-three-characters-at-the-end-of-a-string-in-php
 			$selectquery .= " active = TRUE";
-
 			$result = $conn->query($selectquery);
 
 			//Check if any rows in results
@@ -207,7 +207,6 @@
 			else
 			{
 				"<p>0 results. " . $conn->error . "</p>";
-
 			}
 		}
 

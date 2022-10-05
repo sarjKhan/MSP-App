@@ -161,18 +161,17 @@
 
         $searchresultsarray = array();
 
-
 		//Check if any search has been made.
 		if ($criteriacount > 0)
 		{
 			$selectquery .= " active = TRUE";
 
-			$result = $conn->query($selectquery);
+			$selectresult = $conn->query($selectquery);
 
 			//Checking if result has any records/rows
-			if ($result->num_rows > 0)
+			if ($selectresult->num_rows > 0)
 			{
-				while ($row = $result->fetch_assoc())
+				while ($row = $selectresult->fetch_assoc())
 				{
 					//Putting record into array
 					$searchresultsarray[] = $row;
@@ -210,7 +209,7 @@
 		{
 			//Displaying all search results into array.
 			echo "<table class='content-table'>";
-			echo "<tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Update Member</th><th>Add Sales</th><th>Delete Member</th></tr>";
+			echo "<tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Update Member</th><th>Add Sales</th><th>Delete Member</th><th>Search Sales Record</th></tr>";
 			foreach ($searchresultsarray as $searchresult)
 			{
 				echo "<tr>";
@@ -222,6 +221,7 @@
 				echo "<td><a href='updatememberform.php?member_id=" . $searchresult['member_id'] . "' class='update_php'>Update Member</a></td>";
 				echo "<td><a href='add_sales.php?member_id=" . $searchresult['member_id'] . "' class='add_php'>Add Sales Record</a></td>";
 				echo "<td><a href='deletememberform.php?member_id=" . $searchresult['member_id'] . "' class='delete_php'>Delete</a></td>";
+				echo "<td><a href='searchsalesprocess.php?member_id=" . $searchresult['member_id'] . "'>Search Sales Record</a></td>";
 				echo "</tr>";	
 			}
 			echo "</table>";
