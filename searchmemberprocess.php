@@ -36,6 +36,29 @@
 		.delete_php:hover {
 			text-decoration: underline red;
 		}
+		.content-table {
+			border-collapse: collapse;
+			margin: 25px 0;
+			font-size: 1.2em;
+			min-width: 400px;
+			border-radius: 5px 5px 0 0;
+			overflow: hidden;
+			box-shadow: 0 0 20px rgba(255, 255, 255, 0.20);
+		}
+		.content-table th tr {
+			background-color: #009879;
+			color: white;
+			text-align: center;
+		}
+		.content-table th, .content-table tr {
+			padding: 12px 15px;
+		}
+		.content-table tr {
+			border-bottom: 1px solid #dddddd;
+		}
+		.content-table tr:last-of-type{
+			border-bottom: 2px solid #dddddd;
+		}
 	</style>
     <title>Search Member Results</title>
 </head>
@@ -186,7 +209,7 @@
 		if (sizeof($searchresultsarray) > 0)
 		{
 			//Displaying all search results into array.
-			echo "<table>";
+			echo "<table class='content-table'>";
 			echo "<tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Update Member</th><th>Add Sales</th><th>Delete Member</th></tr>";
 			foreach ($searchresultsarray as $searchresult)
 			{

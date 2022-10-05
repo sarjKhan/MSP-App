@@ -5,7 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
-    <link rel="stylesheet" href="styles.css"/>
+    <style type="text/css">
+		/*Styles for php echos*/
+		@font-face {
+			font-family: 'Avenir';
+			src: url('../fonts/Avenir.eot?#iefix') format('embedded-opentype'), url('../fonts/Avenir.woff') format('woff'), url('../fonts/Avenir.ttf') format('truetype'), url('../fonts/Avenir.svg#Avenir') format('svg');
+			}
+		* {
+			font-family: 'Avenir', Helvetica, sans-serif;
+			color: white;
+		}
+		html {
+			background-color: #152733;
+			color: white;
+			display: flex;
+			justify-content: center;
+			text-align: center;
+		}
+		.update_php {
+			color: greenyellow;
+		}
+		.update_php:hover {
+			text-decoration: underline greenyellow;
+		}
+
+		.delete_php {
+			color: red;
+		}
+
+		.delete_php:hover {
+			text-decoration: underline red;
+		}
+		.content-table {
+			border-collapse: collapse;
+			margin: 25px 0;
+			font-size: 1.2em;
+			min-width: 400px;
+			border-radius: 5px 5px 0 0;
+			overflow: hidden;
+			box-shadow: 0 0 20px rgba(255, 255, 255, 0.20);
+		}
+		.content-table th tr {
+			background-color: #009879;
+			color: white;
+			text-align: center;
+		}
+		.content-table th, .content-table tr {
+			padding: 12px 15px;
+		}
+		.content-table tr {
+			border-bottom: 1px solid #dddddd;
+		}
+		.content-table tr:last-of-type{
+			border-bottom: 2px solid #dddddd;
+		}
+	</style>
     <title>Search Sales Results</title>
 </head>
 <body>
@@ -159,8 +213,8 @@
 
 		if (sizeof($searchresultsarray) > 0)
 		{
-			echo "<table>";
-			echo "<tr><th>Sales ID:</th><th>Member ID:</th><th>Item Name:</th><th>Item Quantity:</th><th>Due Date:</th><th>Update:</th><th>Delete:</th></tr>";
+			echo "<table class='content-table'>";
+			echo "<tr><th>Sales ID</th><th>Member ID</th><th>Item Name</th><th>Item Quantity</th><th>Due Date</th><th>Update</th><th>Delete</th></tr>";
 
 			foreach ($searchresultsarray as $searchresult)
 			{
@@ -170,8 +224,8 @@
 				echo "<td>" . $searchresult['item_name'] . "</td>";
 				echo "<td>" . $searchresult['item_quantity'] . "</td>";
 				echo "<td>" . $searchresult['due_date'] . "</td>";
-				echo "<td><a href='updatesalesform.php?sales_id=" . $searchresult['sales_id'] . "'>Update</a></td>";
-				echo "<td><a href='deletesalesform.php?sales_id=" . $searchresult['sales_id'] . "'>Delete</a></td>";
+				echo "<td><a href='updatesalesform.php?sales_id=" . $searchresult['sales_id'] . "' class='update_php'>Update</a></td>";
+				echo "<td><a href='deletesalesform.php?sales_id=" . $searchresult['sales_id'] . "' class='delete_php'>Delete</a></td>";
 				echo "</tr>";
 			}
 

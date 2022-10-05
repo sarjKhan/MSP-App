@@ -102,7 +102,7 @@
                 $conn->query($tablequery);
 
                 //Query to insert new member into members table with form data.
-                $insertquery = "INSERT INTO `members` (`fname`, `lname`, `email`, `phone`, `active`) VALUES ('$fname', '$lname', '$email', '$phone', TRUE);";
+                $insertquery = "INSERT INTO `members` (`fname`, `lname`, `email`, `phone`, `active`) VALUES ('$fname', '$lname', '$email', '$phone', 'True');";
 
                 //Executes insert query and checks results from query.
                 if ($conn->query($insertquery) === TRUE)
