@@ -59,11 +59,27 @@
 		.content-table tr:last-of-type{
 			border-bottom: 2px solid #dddddd;
 		}
+		.choose_back:link,
+		.choose_back:visited {
+			text-decoration: none;
+			color: white;
+		}
+		.back {
+			color: white;
+			font-weight: bold;
+		}
+
+		.back:hover {
+			text-decoration: underline;
+			color: white;
+			cursor: pointer;
+		}
 	</style>
     <title>Search Member Results</title>
 </head>
 <body>
-<?php include 'nav.php' ?>
+	<?php include 'nav.php' ?>
+	<br>
 	<h1>Search Member Results:</h1>
 	<?php
 		require_once("settings.php");

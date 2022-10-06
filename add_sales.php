@@ -6,6 +6,23 @@
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
     <link rel="stylesheet" href="styles.css"/>
+    <style type="text/css">
+		.back {
+			color: white;
+			font-weight: bold;
+		}
+
+		.back:hover {
+			text-decoration: underline;
+			color: white;
+			cursor: pointer;
+		}
+		.inherit {
+			position: absolute;
+			top: 45%;
+			right: 48%
+		}
+	</style>
     <title>Add Sales</title>
 </head>
 <body>
@@ -48,8 +65,9 @@
 			</div>
 			
 		</fieldset>
-		<div onclick="history.back()"class="back" id ="historicback">&larr;&nbsp;Go Back</div>
 	</form>
-	
+	<div class="inherit">
+		<a onclick="history.back()" class="choose_back"><p class="back">&larr;&nbsp;Go Back</p></a>
+	</div>
 </body>
 </html>

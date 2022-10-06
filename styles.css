@@ -115,8 +115,8 @@ input:hover {
     opacity: .5;
 }
 
-a:link,
-a:visited {
+.choose_back:link,
+.choose_back:visited {
     text-decoration: none;
     color: white;
 }
@@ -129,6 +129,7 @@ a:visited {
 .back:hover {
     text-decoration: underline;
     color: white;
+    cursor: pointer;
 }
 
 /*This is the css for the translation on the index page*/
@@ -249,7 +250,3 @@ zoom: 150%;
     font-size: .8em;
 }
 
-#historicback:hover {
-    cursor: pointer;
-    
-}
