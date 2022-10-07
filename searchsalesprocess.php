@@ -170,7 +170,7 @@
 		if ($criteriacount > 0)
 		{
             //https://stackoverflow.com/questions/4915753/how-can-i-remove-three-characters-at-the-end-of-a-string-in-php
-			$selectquery .= " active = TRUE";
+			$selectquery .= " active = TRUE ORDER BY due_date ASC";
 			$result = $conn->query($selectquery);
 
 			//Check if any rows in results
@@ -192,7 +192,7 @@
 		else
 		{
 			//If no search criteria get all data from sales records table
-			$selectquery = "SELECT * FROM sales_records";
+			$selectquery = "SELECT * FROM sales_records WHERE active=TRUE ORDER BY due_date ASC";
 			$result = $conn->query($selectquery);
 
 			//Check if any records.
