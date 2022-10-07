@@ -1,36 +1,59 @@
 <?php     
 	session_start();
 
-    require_once ("settings.php");
-    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
-    if (!$conn) {
-        echo "< p>Connection Failure </p>"; 
-    }
+    //Checking if form has been set
+    //If empty($_POST['username']) can be used interchangeably 
+    if (isset($_POST['username']) && isset($_POST['password']))
+    {
+        //Setting form input to variable
+        $username = $_POST["username"];
 
-    if (empty($_POST['usrname']) || empty($_POST['psswrd']))
+        //Validation on username needs to be done.
+
+        $password = $_POST["password"];
+
+        //Validation on password needs to be done.
+
+        require_once ("settings.php");
+
+        //@mysqli_connect() can be used interchangeably
+        $conn = new mysqli($host, $user, $pswd, $db);
+
+        //Check if error with connection
+        if ($conn->connect_errno)
         {
-            echo ("<script type='text/javascript'>alert('Username OR Password fields cannot be empty');
-            history.go(-1);</script>");
-            die();
+            echo "<p>Failed to connect to database: " . $conn->connect_error . "</p>";
+            exit();
         }
 
-    else {
-        $user = $_POST["usrname"];
+        //Query to create table if it does not exist
+        $logintable = "CREATE TABLE IF NOT EXISTS login (
+            user_id INT NOT NULL AUTO_INCREMENT,
+            username VARCHAR(20) NOT NULL,
+            password VARCHAR(20) NOT NULL,
+            PRIMARY KEY(user_id)
+        );";
 
-        $pass = $_POST["psswrd"];
+        //Executing create table query
+        $conn->query($logintable);
 
+        //Query to find login info
+        $query = "SELECT * FROM login WHERE username='$username' AND password='$password'";
 
-        $query = "SELECT * FROM login WHERE username=$user AND password=$pass";
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
-            echo "<script type='text/javascript'>
-            document.location='index.html'</script>";
+            echo "Login successful";
+            //Login succcess. Do something.
         }
         else {
-            echo "<script type='text/javascript'>alert('Invalid Username or Password');
-            history.go(-1);</script>";
+            echo "Login failed.";
+            //Login failed. Go back to login screen.
         }
+    }
+    else
+    {
+        echo "<p>No login information has been given</p>";
     }
 
 ?>
