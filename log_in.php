@@ -17,7 +17,7 @@
         ?>
         <h1>GoToGro Member login</h1>
         <?php
-            if ($_SESSION['message'])
+            if (isset($_SESSION['message']))
             {
                 echo "<p>" . $_SESSION['message'] . "</p>";
                 unset($_SESSION['message']);
@@ -34,7 +34,7 @@
                 <label for="psswrd">Password: </label>
                 <input type="password" name="password" id="password" placeholder=" ***********">
             </div>
-            <input type="submit" name="Submit" value="Login"/>
+            <input type="submit" name="Submit" value="Login" class="button"/>
             <div onclick = "updates()" id ="forgotpw"><u> Forgot password?</u></div>
         </fieldset>
         </form>

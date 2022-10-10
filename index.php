@@ -7,6 +7,54 @@
     <meta name="Title" content="GotoGro Memeber Management Sysytem" />
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        
+        .content-table {
+			border-collapse: collapse;
+			margin: 25px 0;
+			font-size: 1.2em;
+			min-width: 400px;
+			border-radius: 5px 5px 0 0;
+			overflow: hidden;
+			box-shadow: 0 0 20px rgba(255, 255, 255, 0.20);
+		}
+		.content-table th tr {
+			background-color: #009879;
+			color: white;
+			text-align: center;
+		}
+		.content-table th, .content-table tr {
+			padding: 12px 15px;
+		}
+		.content-table tr {
+			border-bottom: 1px solid #dddddd;
+		}
+		.content-table tr:last-of-type{
+			border-bottom: 2px solid #dddddd;
+		}
+        .reminder {
+            position: absolute;
+            top: 450px;
+            left: 700px;
+        }
+        @keyframes bloom {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+        .reminder {
+            opacity: 0;
+        }
+        .reminder {
+            animation: bloom 2s;
+            animation-delay: 3s;
+            animation-fill-mode: forwards;
+        }
+    </style>
     <script src="./features.js"></script>
     <title>Home Page</title>
 </head>
@@ -69,8 +117,8 @@
             $selectquery = "SELECT * FROM sales_records WHERE due_date <= NOW() + INTERVAL 3 day";
 
             $result = $conn->query($selectquery);
-
-            echo "<h2>Upcoming Grocery Needs.</h2>";
+            echo "<div class='reminder'>";
+            echo "<h2>Upcoming Grocery Needs Due:</h2>";
 
             if ($result->num_rows > 0)
             {
@@ -89,6 +137,7 @@
                 }
 
                 echo "</table>";
+                echo "</div>";
             }
             else
             {
