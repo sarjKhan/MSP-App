@@ -43,7 +43,7 @@
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
-            echo echo "<script type='text/javascript'>
+            echo "<script type='text/javascript'>
             document.location='index.html'</script>";
             //Login succcess. Do something.
         }
