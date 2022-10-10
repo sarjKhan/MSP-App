@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
 		/*Styles for php echos*/
 		@font-face {
@@ -58,6 +59,23 @@
 		}
 		.content-table tr:last-of-type{
 			border-bottom: 2px solid #dddddd;
+		}
+		.float-left{
+			position: relative;
+			left: 360px;
+			background-color: green;
+			margin: auto;
+			width: 90px;
+			border-radius: 5px 5px 5px 5px;
+		}
+		.float-left a{
+			text-decoration: none;
+		}
+		#export {
+			padding: 6px 2px 6px 2px;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 18px;
 		}
 	</style>
     <title>Search Sales Results</title>
@@ -212,6 +230,7 @@
 
 		if (sizeof($searchresultsarray) > 0)
 		{
+			echo "<div class='float-left'><a href='export.php'><p id='export'><i class='fa fa-download' style='font-size:20px'></i> Export</p></a></div>";
 			echo "<table class='content-table'>";
 			echo "<tr><th>Sales ID</th><th>Member ID</th><th>Item Name</th><th>Item Quantity</th><th>Due Date</th><th>Update</th><th>Delete</th></tr>";
 
