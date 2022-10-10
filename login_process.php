@@ -43,17 +43,20 @@
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
-            echo "Login successful";
+            echo echo "<script type='text/javascript'>
+            document.location='index.html'</script>";
             //Login succcess. Do something.
         }
         else {
-            echo "Login failed.";
+            echo "<script type='text/javascript'>alert('Invalid Username or Password');
+            history.go(-1);</script>";
             //Login failed. Go back to login screen.
         }
     }
     else
     {
-        echo "<p>No login information has been given</p>";
+        echo ("<script type='text/javascript'>alert('Username OR Password fields cannot be empty');
+        history.go(-1);</script>");
     }
 
 ?>
