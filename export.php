@@ -117,7 +117,8 @@
 
         //output each row of the data
         while($row = $result->fetch_assoc()){
-            $date = strval($row['due_date']);
+            $date = $row['due_date'];
+            settype($date, 'string');
             $lineData = array($row['sales_id'], $row['member_id'], $row['item_name'], $row['item_quantity'], $date);
             fputcsv($f, $lineData, $delimiter);
         }
