@@ -43,14 +43,15 @@
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
-            echo "<script type='text/javascript'>
-            document.location='index.html'</script>";
             //Login succcess. Do something.
+            $_SESSION['loggedin'] = "success";
+            $_SESSION['message'] = "Successfully logged in.";
+            header("location: index.php");
         }
         else {
-            echo "<script type='text/javascript'>alert('Invalid Username or Password');
-            history.go(-1);</script>";
             //Login failed. Go back to login screen.
+            $_SESSION['message'] = "Failed to log in.";
+            header("location: log_in.php");
         }
     }
     else

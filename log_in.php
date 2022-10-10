@@ -11,11 +11,18 @@
     </head>
     <body>
         <?php
-
+            session_start();
             include 'nav.php'
 
         ?>
         <h1>GoToGro Member login</h1>
+        <?php
+            if ($_SESSION['message'])
+            {
+                echo "<p>" . $_SESSION['message'] . "</p>";
+                unset($_SESSION['message']);
+            }
+        ?>
         <center>
         <form method="post" action="login_process.php">
             <fieldset class="add_form">

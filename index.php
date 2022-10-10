@@ -12,13 +12,20 @@
 </head>
 
 <body>
-    <div class="topnav">
-        <img onclick="document.location.href='index.html'" id="logo" src="images/grocery icon.png" alt="logo"
-            width="70" height="70">
-        <a class="active" href="index.html">Home</a>
-        <a href="log_in.php">Log-in</a>
-    </div>
+    <?php
+        include 'nav.php';
+        session_start();
 
+        if ($_SESSION['loggedin'] && $_SESSION['message'])
+        {
+            echo "<p>" . $_SESSION['message'] . "</p>";
+        }
+        else
+        {
+            $_SESSION['message'] = "Must be logged in";
+            header("location: log_in.php");
+        }
+    ?>
 
     <div>
         <h1 class="index_h1">Welcome to GoToGro Member Management System</h1>
