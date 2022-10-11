@@ -9,14 +9,17 @@
     <link rel="stylesheet" href="styles.css" />
     <style>
         
+       
+
         .content-table {
 			border-collapse: collapse;
-			margin: 25px 0;
 			font-size: 1.2em;
 			min-width: 400px;
 			border-radius: 5px 5px 0 0;
 			overflow: hidden;
 			box-shadow: 0 0 20px rgba(255, 255, 255, 0.20);
+            margin: auto;
+            
 		}
 		.content-table th tr {
 			background-color: #009879;
@@ -32,11 +35,15 @@
 		.content-table tr:last-of-type{
 			border-bottom: 2px solid #dddddd;
 		}
-        .reminder {
-            position: absolute;
-            top: 450px;
-            left: 700px;
-        }
+        
+
+        #neworderbutton {
+            position:relative;
+            top: 100px;
+            zoom: 150%;
+
+            }
+        
         @keyframes bloom {
             0% {
                 opacity: 0;
@@ -48,6 +55,8 @@
         }
         .reminder {
             opacity: 0;
+            position:relative;
+            top: 200px;
         }
         .reminder {
             animation: bloom 2s;
