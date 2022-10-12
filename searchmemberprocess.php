@@ -5,76 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
-    <style type="text/css">
-		/*Styles for php echos*/
-		@font-face {
-			font-family: 'Avenir';
-			src: url('../fonts/Avenir.eot?#iefix') format('embedded-opentype'), url('../fonts/Avenir.woff') format('woff'), url('../fonts/Avenir.ttf') format('truetype'), url('../fonts/Avenir.svg#Avenir') format('svg');
-			}
-		* {
-			font-family: 'Avenir', Helvetica, sans-serif;
-			color: white;
-		}
-		html {
-			background-color: #152733;
-			color: white;
-			display: flex;
-			justify-content: center;
-			text-align: center;
-		}
-		.update_php {
-			color: greenyellow;
-		}
-		.update_php:hover {
-			text-decoration: underline greenyellow;
-		}
-
-		.delete_php {
-			color: red;
-		}
-
-		.delete_php:hover {
-			text-decoration: underline red;
-		}
-		.content-table {
-			border-collapse: collapse;
-			margin: 25px 0;
-			font-size: 1.2em;
-			min-width: 400px;
-			border-radius: 5px 5px 0 0;
-			overflow: hidden;
-			box-shadow: 0 0 20px rgba(255, 255, 255, 0.20);
-		}
-		.content-table th tr {
-			background-color: #009879;
-			color: white;
-			text-align: center;
-		}
-		.content-table th, .content-table tr {
-			padding: 12px 15px;
-		}
-		.content-table tr {
-			border-bottom: 1px solid #dddddd;
-		}
-		.content-table tr:last-of-type{
-			border-bottom: 2px solid #dddddd;
-		}
-		.choose_back:link,
-		.choose_back:visited {
-			text-decoration: none;
-			color: white;
-		}
-		.back {
-			color: white;
-			font-weight: bold;
-		}
-
-		.back:hover {
-			text-decoration: underline;
-			color: white;
-			cursor: pointer;
-		}
-	</style>
+    <link rel="stylesheet" href="styles.css"/>
     <title>Search Member Results</title>
 </head>
 <body>
@@ -161,7 +92,19 @@
             exit();
         }
 
-        createMemberTable($conn);
+        //Query to create table if it does not exist
+        $tablequery = "CREATE TABLE IF NOT EXISTS members (
+            member_id INT NOT NULL AUTO_INCREMENT,
+            fname varchar(20) NOT NULL,
+            lname varchar(20) NOT NULL,
+            email varchar(255) NOT NULL,
+            phone varchar(255) NOT NULL,
+            active BOOLEAN NOT NULL,
+            PRIMARY KEY (member_id)
+        );";
+
+        //Execute table creation query
+        $conn->query($tablequery);
 
         $searchresultsarray = array();
 

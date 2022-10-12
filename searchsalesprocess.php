@@ -5,79 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style type="text/css">
-		/*Styles for php echos*/
-		@font-face {
-			font-family: 'Avenir';
-			src: url('../fonts/Avenir.eot?#iefix') format('embedded-opentype'), url('../fonts/Avenir.woff') format('woff'), url('../fonts/Avenir.ttf') format('truetype'), url('../fonts/Avenir.svg#Avenir') format('svg');
-			}
-		* {
-			font-family: 'Avenir', Helvetica, sans-serif;
-			color: white;
-		}
-		html {
-			background-color: #152733;
-			color: white;
-			display: flex;
-			justify-content: center;
-			text-align: center;
-		}
-		.update_php {
-			color: greenyellow;
-		}
-		.update_php:hover {
-			text-decoration: underline greenyellow;
-		}
-
-		.delete_php {
-			color: red;
-		}
-
-		.delete_php:hover {
-			text-decoration: underline red;
-		}
-		.content-table {
-			border-collapse: collapse;
-			margin: 25px 0;
-			font-size: 1.2em;
-			min-width: 400px;
-			border-radius: 5px 5px 0 0;
-			overflow: hidden;
-			box-shadow: 0 0 20px rgba(255, 255, 255, 0.20);
-		}
-		.content-table th tr {
-			background-color: #009879;
-			color: white;
-			text-align: center;
-		}
-		.content-table th, .content-table tr {
-			padding: 12px 15px;
-		}
-		.content-table tr {
-			border-bottom: 1px solid #dddddd;
-		}
-		.content-table tr:last-of-type{
-			border-bottom: 2px solid #dddddd;
-		}
-		.float-left{
-			position: relative;
-			left: 360px;
-			background-color: green;
-			margin: auto;
-			width: 90px;
-			border-radius: 5px 5px 5px 5px;
-		}
-		.float-left a{
-			text-decoration: none;
-		}
-		#export {
-			padding: 6px 2px 6px 2px;
-			text-decoration: none;
-			font-weight: bold;
-			font-size: 18px;
-		}
-	</style>
+    <link rel="stylesheet" href="styles.css"/>
     <title>Search Sales Results</title>
 </head>
 <body>
@@ -159,7 +87,19 @@
             exit();
         }
 
-       	createSalesTable($conn);
+        $tablequery = "CREATE TABLE IF NOT EXISTS sales_records (
+            sales_id INT NOT NULL AUTO_INCREMENT,
+            member_id INT NOT NULL,
+            item_name varchar(20) NOT NULL,
+            item_quantity INT NOT NULL,
+            due_date DATE NOT NULL,
+            active BOOLEAN NOT NULL,
+            PRIMARY KEY (sales_id),
+            FOREIGN KEY (member_id) REFERENCES members(member_id)
+        );";
+                    
+        //Execute table creation query
+        $conn->query($tablequery);
 
         $searchresultsarray = array();
 
@@ -209,7 +149,6 @@
 
 		if (sizeof($searchresultsarray) > 0)
 		{
-			echo "<div class='float-left'><a href='export.php'><p id='export'><i class='fa fa-download' style='font-size:20px'></i> Export</p></a></div>";
 			echo "<table class='content-table'>";
 			echo "<tr><th>Sales ID</th><th>Member ID</th><th>Item Name</th><th>Item Quantity</th><th>Due Date</th><th>Update</th><th>Delete</th></tr>";
 

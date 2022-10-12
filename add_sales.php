@@ -6,23 +6,7 @@
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
     <link rel="stylesheet" href="styles.css"/>
-    <style type="text/css">
-		.back {
-			color: white;
-			font-weight: bold;
-		}
-
-		.back:hover {
-			text-decoration: underline;
-			color: white;
-			cursor: pointer;
-		}
-		.inherit {
-			position: absolute;
-			top: 45%;
-			right: 48%
-		}
-	</style>
+    <link rel="stylesheet" href="styles.css"/>
     <title>Add Sales</title>
 </head>
 <body>

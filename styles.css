@@ -8,8 +8,6 @@
     color: white;
 }
 
-
-
 html {
     background-color: #152733;
     color: white;
@@ -250,5 +248,100 @@ zoom: 150%;
     font-size: .8em;
 }
 
+.update_php {
+    color: greenyellow;
+}
+
+.update_php:hover {
+    text-decoration: underline greenyellow;
+}
+
+.delete_php {
+    color: red;
+}
+
+.delete_php:hover {
+    text-decoration: underline red;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1.2em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.20);
+}
+
+.content-table th tr {
+    background-color: #009879;
+    color: white;
+    text-align: center;
+}
+
+.content-table th, .content-table tr {
+    padding: 12px 15px;
+}
+
+.content-table tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tr:last-of-type{
+    border-bottom: 2px solid #dddddd;
+}
+
+.choose_back:link, .choose_back:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.back {
+    color: white;
+    font-weight: bold;
+}
+
+.back:hover {
+    text-decoration: underline;
+    color: white;
+    cursor: pointer;
+}
+
+.inherit {
+    position: absolute;
+    top: 45%;
+    right: 48%
+}
+
+.topnav {
+    overflow: hidden;
+    position: absolute;
+    left: 8px;
+}
+
+.topnav a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 2px;
+    padding-right: 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.topnav a:hover {
+    color: white;
+    text-decoration: underline;
+    transform: scale(1.1);
+}
 
 
+.topnav a.active {
+    font-weight: bold;
+}
+
+#logo {
+    float: left;
+    cursor: pointer;
+}
