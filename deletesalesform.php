@@ -15,7 +15,7 @@
 
 		if (isset($_GET['sales_id']))
 		{
-			$sales_id = $_GET['sales_id'];
+			$sales_id = sanitiseInput($_GET['sales_id']);
 
 			if (!is_numeric($sales_id))
 			{

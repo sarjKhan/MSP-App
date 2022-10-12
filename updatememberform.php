@@ -13,12 +13,13 @@
     <h1>Update Member Form</h1>
     <?php
         require_once("settings.php");
+        require_once("phpfunctions.php");
 
         //Checking form input
         if (isset($_GET['member_id']))
         {
             $errorMsg = array();
-            $member_id = $_GET['member_id'];
+            $member_id = sanitiseInput($_GET['member_id']);
 
             //Validating sales id form input
             if (is_numeric($member_id))

@@ -19,7 +19,7 @@
 		//Checking if member id was set
 		if (isset($_GET['member_id']))
 		{
-			$member_id = $_GET['member_id'];
+			$member_id = sanitiseInput($_GET['member_id']);
 			//Validating member id
 			if (!is_numeric($member_id))
 			{

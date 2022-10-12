@@ -22,6 +22,19 @@
                 echo "<p>" . $_SESSION['message'] . "</p>";
                 unset($_SESSION['message']);
             }
+
+            if (isset($_SESSION['errors']))
+            {
+                echo "<p>The following errors have been encountered</p>";
+                echo "<ul>";
+                foreach($_SESSION['errors'] as $errors)
+                {
+                    echo "<li>$errors</li>";
+                }
+                echo "</ul>";
+
+                unset($_SESSION['errors']);
+            }
         ?>
         <center>
         <form method="post" action="login_process.php">

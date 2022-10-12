@@ -12,6 +12,7 @@
 <?php include 'nav.php' ?>
     <?php
         require_once("settings.php");
+        require_once("phpfunctions.php");
 
         //Validate inputs
         if (isset($_POST['member_id']) && isset($_POST['item_name']) && isset($_POST['item_quantity']) && isset($_POST['due_date']))
@@ -20,7 +21,7 @@
             $errorMsg = array();
 
             //Getting value of member id from form
-            $member_id = $_POST['member_id'];
+            $member_id = sanitiseInput($_POST['member_id']);
 
             //Validating member id is not empty and is number
             if (strlen($member_id) > 0 && is_numeric($member_id))

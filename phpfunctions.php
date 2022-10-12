@@ -46,4 +46,12 @@
 
 		echo "</ul>";
 	}
+
+    function sanitiseInput($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlentities($data);
+        return $data;
+    }
 ?>

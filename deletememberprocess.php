@@ -17,7 +17,7 @@
 		//Checking if member id was set
 		if (isset($_POST['member_id']))
 		{
-			$member_id = $_POST['member_id'];
+			$member_id = sanitiseInput($_POST['member_id']);
 			//Validating member id
 			if (!is_numeric($member_id))
 			{

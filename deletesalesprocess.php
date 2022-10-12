@@ -15,7 +15,7 @@
 
 		if (isset($_POST['sales_id']))
 		{
-			$sales_id = $_POST['sales_id'];
+			$sales_id = sanitiseInput($_POST['sales_id']);
 
 			if (!is_numeric($sales_id))
 			{

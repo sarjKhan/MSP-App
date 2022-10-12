@@ -73,14 +73,16 @@
         include 'nav.php';
         session_start();
 
-        if ($_SESSION['loggedin'] && $_SESSION['message'])
-        {
-            echo "<p>" . $_SESSION['message'] . "</p>";
-        }
-        else
+        if (!isset($_SESSION['loggedin']))
         {
             $_SESSION['message'] = "Must be logged in";
             header("location: log_in.php");
+        }
+
+        if (isset($_SESSION['message']))
+        {
+            echo "<p>" . $_SESSION['message'] . "</p>";
+            unset($_SESSION['message']);
         }
     ?>
 

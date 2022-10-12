@@ -19,7 +19,7 @@
         {
             $errorMsg = array();
 
-            $fname = stripslashes($_POST['f_name']); 
+            $fname = sanitiseInput($_POST['f_name']);
 
             $fnamepattern = "/^[a-zA-Z- ]+$/"; 
             //Validating first name meets format.
@@ -28,7 +28,7 @@
                 $errorMsg[] = "First name is not in the correct format. It must be between 1 and 20 characters and contain only letters, hypens and spaces.";
             }
                 
-            $lname = stripslashes($_POST['l_name']);
+            $lname = sanitiseInput($_POST['l_name']);
 
             $lnamepattern = "/^[a-zA-Z]+$/";
             //Validating last name meets format.
@@ -37,7 +37,7 @@
                 $errorMsg[] = "Last name is not in the correct format. It must be between 1 and 20 characters and contain only letters.";
             }
 
-            $email = stripslashes($_POST['email']);
+            $email = sanitiseInput($_POST['email']);
 
             $emailpattern = "/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/";
             //Validating email input.
@@ -47,7 +47,7 @@
                 $errorMsg[] = "Email is not in the correct format.";
             }
 
-            $phone = stripslashes($_POST['phone']);
+            $phone = sanitiseInput($_POST['phone']);
 
             $phonepattern = "/^(\+?\(61\)|\(\+?61\)|\+?61|\(0[1-9]\)|0[1-9])?( ?-?[0-9]){7,9}$/";
             //Validating phone number.

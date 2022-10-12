@@ -13,13 +13,14 @@
     <h1>Update Sales Form</h1>
     <?php
         require_once("settings.php");
+        require_once("phpfunctions.php");
 
         //Checking form input
         if (isset($_POST['sales_id']) && isset($_POST['member_id']) && isset($_POST['item_name']) && isset($_POST['item_quantity']) && isset($_POST['due_date']))
         {
             $errorMsg = array();
 
-            $sales_id = $_POST['sales_id'];
+            $sales_id = sanitiseInput($_POST['sales_id']);
 
             //Validating sales id form input
             if (is_numeric($sales_id) && strlen($sales_id) > 0)
@@ -56,7 +57,7 @@
                 $errorMsg[] = "Sales ID is not a number.";
             }
 
-            $member_id = $_POST['member_id'];
+            $member_id = sanitiseInput($_POST['member_id']);
 
             //Validating member id is not empty and is number
             if (strlen($member_id) > 0 && is_numeric($member_id))
@@ -91,7 +92,7 @@
             }
 
             //Assigning item_name to variable
-            $item_name = $_POST['item_name'];
+            $item_name = sanitiseInput($_POST['item_name']);
 
             //Validating item name
             if (strlen($item_name) > 0 || strlen($item_name) <= 20)
@@ -108,7 +109,7 @@
             }
 
             //Validating item quantity
-            $item_quantity = $_POST['item_quantity'];
+            $item_quantity = sanitiseInput($_POST['item_quantity']);
 
             if (is_numeric($item_quantity))
             {

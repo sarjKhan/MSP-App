@@ -13,13 +13,14 @@
     <h1>Update Sales Form</h1>
     <?php
         require_once("settings.php");
+        require_once("phpfunctions.php");
 
         //Checking form input
         if (isset($_POST['member_id']) && isset($_POST['f_name']) && isset($_POST['l_name']) && isset($_POST['email']) && isset($_POST['phone']))
         {
             $errorMsg = array();
 
-            $member_id = stripslashes($_POST['member_id']);
+            $member_id = sanitiseInput($_POST['member_id']);
 
 
             //Validating member id is not empty and is number
@@ -54,7 +55,7 @@
                 $conn->close();
             }
 
-            $fname = stripslashes($_POST['f_name']); 
+            $fname = sanitiseInput($_POST['f_name']); 
 
             $fnamepattern = "/^[a-zA-Z- ]+$/"; 
             //Validating first name meets format.
@@ -63,7 +64,7 @@
                 $errorMsg[] = "First name is not in the correct format. It must be between 1 and 20 characters and contain only letters, hypens and spaces.\n";
             }
 
-            $lname = stripslashes($_POST['l_name']);
+            $lname = sanitiseInput($_POST['l_name']);
 
             $lnamepattern = "/^[a-zA-Z]+$/";
             //Validating last name meets format.
@@ -72,7 +73,7 @@
                 $errorMsg[] = "Last name is not in the correct format. It must be between 1 and 20 characters and contain only letters.\n";
             }
 
-            $email = stripslashes($_POST['email']);
+            $email = sanitiseInput($_POST['email']);
 
             $emailpattern = "/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/";
             //Validating email input.
@@ -82,7 +83,7 @@
                 $errorMsg[] = "Email is not in the correct format.\n";
             }
 
-            $phone = stripslashes($_POST['phone']);
+            $phone = sanitiseInput($_POST['phone']);
 
             $phonepattern = "/^(\+?\(61\)|\(\+?61\)|\+?61|\(0[1-9]\)|0[1-9])?( ?-?[0-9]){7,9}$/";
             //Validating phone number.
