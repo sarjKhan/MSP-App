@@ -127,24 +127,7 @@
                     exit();
                 }
 
-                //Query to create table if it does not exist
-                //Transaction id and datetime sold will be entered manually by user in form.
-                $tablequery = "CREATE TABLE IF NOT EXISTS sales_records (
-                    sales_id INT NOT NULL AUTO_INCREMENT,
-                    member_id INT NOT NULL,
-                    item_name varchar(20) NOT NULL,
-                    item_quantity INT NOT NULL,
-                    due_date DATE NOT NULL,
-                    active BOOLEAN NOT NULL,
-                    PRIMARY KEY (sales_id),
-                    FOREIGN KEY (member_id) REFERENCES members(member_id)
-                );";
-
-                //Execute table creation query
-                if ($conn->query($tablequery) === FALSE)
-                {
-                    echo "<p>Error with database: " . $conn->error . "</p>";
-                }
+                createSalesTable($conn);
 
                 //Query to insert new sales into sales records table with form data.
                 $insertsales = "INSERT INTO `sales_records` (`member_id`,  `item_name`, `item_quantity`, `due_date`, `active`) VALUES ('$member_id', '$item_name', '$item_quantity', '$due_date', TRUE);";
@@ -166,18 +149,7 @@
             else
             {
                 //Display errors here in unordered list
-                echo "<p>The following error(s) have been encountered:</p>";
-
-                echo "<ul>";
-                foreach($errorMsg as $error)
-                {
-                    if ($error != "")
-                    {
-                        echo "<li>$error</li>";
-                    }
-                }
-
-                echo "</ul>";
+                displayErrors($errorMsg);
             }
         }
         else

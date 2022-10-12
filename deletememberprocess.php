@@ -36,19 +36,7 @@
 	                exit();
 	            }
 
-	            //Query to create table if it does not exist
-	           	$tablequery = "CREATE TABLE IF NOT EXISTS members (
-	                member_id INT NOT NULL AUTO_INCREMENT,
-	                fname varchar(20) NOT NULL,
-	                lname varchar(20) NOT NULL,
-	              	email varchar(255) NOT NULL,
-	                phone varchar(255) NOT NULL,
-	                active BOOLEAN NOT NULL,
-	                PRIMARY KEY (member_id)
-	            );";
-	                    
-	            //Execute table creation query
-	            $conn->query($tablequery);
+	            createMemberTable($conn);
 
 	            $checkactivity = "SELECT active FROM members WHERE member_id = $member_id";
 	            $activity = $conn->query($checkactivity);
@@ -66,7 +54,7 @@
 			            }
 			            else
 			            {
-			            	echo "<p>Unable";
+			            	echo "<p>Unable to delete records</p>";
 			            }
 	            	}
 	            	else
@@ -78,8 +66,6 @@
 	            {
 	            	echo "<p>Unable to find member record.</p>";
 	            }
-
-	            
 
 	            $conn->close();
 			}

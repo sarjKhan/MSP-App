@@ -149,23 +149,7 @@
                     exit();
                 }
 
-                //Query to create table if it does not exist
-                $tablequery = "CREATE TABLE IF NOT EXISTS sales_records (
-                    sales_id INT NOT NULL AUTO_INCREMENT,
-                    member_id INT NOT NULL,
-                    item_name varchar(20) NOT NULL,
-                    item_quantity INT NOT NULL,
-                    due_date DATE NOT NULL,
-                    active BOOLEAN NOT NULL,
-                    PRIMARY KEY (sales_id),
-                    FOREIGN KEY (member_id) REFERENCES members(member_id)
-                );";
-
-                //Execute table creation query
-                if ($conn->query($tablequery) === FALSE)
-                {
-                    echo "<p>Error with database: " . $conn->error . "</p>";
-                }
+                createSalesTable($conn);
 
                 $checkactivity = "SELECT active FROM sales_records WHERE sales_id = $sales_id";
                 $activity = $conn->query($checkactivity);
@@ -197,13 +181,7 @@
             }
             else
             {
-                echo "<p>The following list of error(s) were encountered:</p>";
-                echo "<ul>";
-                foreach($errorMsg as $error)
-                {
-                    echo "<li>$error</li>";
-                }
-                echo "</ul>";
+                displayErrors($errorMsg);
             }
         }
         else

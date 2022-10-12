@@ -161,19 +161,7 @@
             exit();
         }
 
-        //Query to create table if it does not exist
-        $tablequery = "CREATE TABLE IF NOT EXISTS members (
-            member_id INT NOT NULL AUTO_INCREMENT,
-            fname varchar(20) NOT NULL,
-            lname varchar(20) NOT NULL,
-            email varchar(255) NOT NULL,
-            phone varchar(255) NOT NULL,
-            active BOOLEAN NOT NULL,
-            PRIMARY KEY (member_id)
-        );";
-
-        //Execute table creation query
-        $conn->query($tablequery);
+        createMemberTable($conn);
 
         $searchresultsarray = array();
 

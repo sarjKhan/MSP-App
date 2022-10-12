@@ -104,22 +104,7 @@
                     exit();
                 }
 
-                //Query to create table if it does not exist
-                $tablequery = "CREATE TABLE IF NOT EXISTS members (
-                    member_id INT NOT NULL AUTO_INCREMENT,
-                    fname varchar(20) NOT NULL,
-                    lname varchar(20) NOT NULL,
-                    email varchar(255) NOT NULL,
-                    phone varchar(255) NOT NULL,
-                    active BOOLEAN NOT NULL,
-                    PRIMARY KEY (member_id)
-                );";
-
-                //Execute table creation query
-                if ($conn->query($tablequery) === FALSE)
-                {
-                    echo "<p>Error with database: " . $conn->error . "</p>";
-                }
+                createMemberTable($conn);
 
                 $checkactivity = "SELECT active FROM members WHERE member_id = $member_id";
                 $activity = $conn->query($checkactivity);
@@ -152,13 +137,7 @@
             }
             else
             {
-                echo "<p>The following list of error(s) were encountered:</p>";
-                echo "<ul>";
-                foreach($errorMsg as $error)
-                {
-                    echo "<li>$error</li>";
-                }
-                echo "</ul>";
+                displayErrors($errorMsg);
             }
         }
         else

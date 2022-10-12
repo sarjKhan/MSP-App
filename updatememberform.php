@@ -41,17 +41,8 @@
                 exit();
             }
 
-            //Query to create table if it does not exist
-            $tablequery = "CREATE TABLE IF NOT EXISTS members (
-                member_id INT NOT NULL AUTO_INCREMENT,
-                fname varchar(20) NOT NULL,
-                lname varchar(20) NOT NULL,
-                email varchar(255) NOT NULL,
-                phone varchar(255) NOT NULL,
-                active BOOLEAN NOT NULL,
-                PRIMARY KEY (member_id)
-            );";
-
+            createMemberTable($conn);
+            
             //Query to check sales record in database
             $querychecksales = "SELECT * FROM members WHERE member_id = $member_id AND active = TRUE";
 
@@ -94,13 +85,7 @@
             }
             else
             {
-                echo "<p>The following error(s)) have been encountered:</p>";
-                echo "<ul>";
-                foreach ($errorMsg as $error) 
-                {
-                    echo "<li>$error</li>";
-                }
-                echo "</ul>";
+                displayErrors($errorMsg);
             }
 
             //Closing connection

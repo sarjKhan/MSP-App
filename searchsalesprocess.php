@@ -148,15 +148,6 @@
 				$criteriacount++;
 			}
 		}
-		/*
-		//Check if emtpy -> return all results (ADDED BY CONRAD)
-		if ($criteriacount == 0)
-		{		
-				//Adding item name to query
-				$selectquery .= " ";
-				$criteriacount++;	
-		}
-		*/
 
 		//Creating database connection
 		$conn = new mysqli($host, $user, $pswd, $db);
@@ -168,19 +159,7 @@
             exit();
         }
 
-        $tablequery = "CREATE TABLE IF NOT EXISTS sales_records (
-            sales_id INT NOT NULL AUTO_INCREMENT,
-            member_id INT NOT NULL,
-            item_name varchar(20) NOT NULL,
-            item_quantity INT NOT NULL,
-            due_date DATE NOT NULL,
-            active BOOLEAN NOT NULL,
-            PRIMARY KEY (sales_id),
-            FOREIGN KEY (member_id) REFERENCES members(member_id)
-        );";
-                    
-        //Execute table creation query
-        $conn->query($tablequery);
+       	createSalesTable($conn);
 
         $searchresultsarray = array();
 
