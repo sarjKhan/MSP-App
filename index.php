@@ -8,9 +8,6 @@
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde" />
     <link rel="stylesheet" href="styles.css" />
     <style>
-        
-       
-
         .content-table {
 			border-collapse: collapse;
 			font-size: 1.2em;
@@ -90,8 +87,8 @@
         <h1 class="index_h1">Welcome to GoToGro Member Management System</h1>
         <h2 class="index_h2">What would you like to do today: </h2>
 
-        <a href="manage_members.html"><button class="button" id="index_button">Manage Members</button></a>
-        <a href="search_sales.html"><button class="button" id="index_button">Search Existing Customer
+        <a href="manage_members.php"><button class="button" id="index_button">Manage Members</button></a>
+        <a href="search_sales.php"><button class="button" id="index_button">Search Existing Customer
                 Orders</button></a>
 
         <div>
@@ -101,6 +98,7 @@
     <!--Grocery Needs In Next 3 days-->
         <?php
             require_once('settings.php');
+            require_once("phpfunctions.php");
 
             //Creating database connection
             $conn = new mysqli($host, $user, $pswd, $db);
@@ -112,18 +110,7 @@
                 exit();
             }
 
-            $tablequery = "CREATE TABLE IF NOT EXISTS sales_records (
-                sales_id INT NOT NULL AUTO_INCREMENT,
-                member_id INT NOT NULL,
-                item_name varchar(20) NOT NULL,
-                item_quantity INT NOT NULL,
-                due_date DATE NOT NULL,
-                active BOOLEAN NOT NULL,
-                PRIMARY KEY (sales_id),
-                FOREIGN KEY (member_id) REFERENCES members(member_id)
-            );";
-
-            $conn->query($tablequery);
+            createSalesTable($conn);
 
             $selectquery = "SELECT * FROM sales_records WHERE due_date <= NOW() + INTERVAL 3 day";
 
