@@ -14,6 +14,7 @@
 	<h1>Search Member Results:</h1>
 	<?php
 		require_once("settings.php");
+		require_once("phpfunctions.php");
 
 		$selectquery = "SELECT * FROM `members` WHERE ";
 		$criteriacount = 0;
@@ -92,19 +93,7 @@
             exit();
         }
 
-        //Query to create table if it does not exist
-        $tablequery = "CREATE TABLE IF NOT EXISTS members (
-            member_id INT NOT NULL AUTO_INCREMENT,
-            fname varchar(20) NOT NULL,
-            lname varchar(20) NOT NULL,
-            email varchar(255) NOT NULL,
-            phone varchar(255) NOT NULL,
-            active BOOLEAN NOT NULL,
-            PRIMARY KEY (member_id)
-        );";
-
-        //Execute table creation query
-        $conn->query($tablequery);
+        createMemberTable($conn);
 
         $searchresultsarray = array();
 
@@ -134,7 +123,7 @@
 		else
 		{
 			//Check all members if no search input made
-			$selectquery = "SELECT * FROM members";
+			$selectquery = "SELECT * FROM members WHERE active=TRUE";
 
 			$result = $conn->query($selectquery);
 
@@ -174,6 +163,6 @@
 			echo "</table>";
 		}	
 	?>
-	<a href="search_members.html" class="choose_back"><p class="back">&larr;&nbsp;Go Back</p></a>
+	<a href="search_members.php" class="choose_back"><p class="back">&larr;&nbsp;Go Back</p></a>
 </body>
 </html>

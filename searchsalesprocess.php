@@ -13,6 +13,7 @@
 	<h1>Search Sales Result:</h1>
 	<?php
 		require_once("settings.php");
+		require_once("phpfunctions.php");
 
 		$selectquery = "SELECT * FROM `sales_records` WHERE ";
 		$criteriacount = 0;
@@ -87,19 +88,7 @@
             exit();
         }
 
-        $tablequery = "CREATE TABLE IF NOT EXISTS sales_records (
-            sales_id INT NOT NULL AUTO_INCREMENT,
-            member_id INT NOT NULL,
-            item_name varchar(20) NOT NULL,
-            item_quantity INT NOT NULL,
-            due_date DATE NOT NULL,
-            active BOOLEAN NOT NULL,
-            PRIMARY KEY (sales_id),
-            FOREIGN KEY (member_id) REFERENCES members(member_id)
-        );";
-                    
-        //Execute table creation query
-        $conn->query($tablequery);
+        createSalesTable($conn);
 
         $searchresultsarray = array();
 
@@ -168,7 +157,7 @@
 			echo "</table>";
 		}
 	?>
-	<a href="search_sales.html" class="choose_back"><p class="back">&larr;&nbsp;Go Back</p></a>
+	<a href="search_sales.php" class="choose_back"><p class="back">&larr;&nbsp;Go Back</p></a>
 	
 </body>
 </html>
