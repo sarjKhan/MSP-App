@@ -4,4 +4,5 @@
 	session_start();
 	$_SESSION['message'] = "Logged out";
 	header("location: log_in.php");
+	session_destroy();
 ?>

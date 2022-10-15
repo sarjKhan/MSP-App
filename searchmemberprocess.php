@@ -6,6 +6,13 @@
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
     <link rel="stylesheet" href="styles.css"/>
+	<style type="text/css">
+		.content-table {
+			justify-content: center;
+    		text-align: center;
+			margin: auto;
+		}
+	</style>
     <title>Search Member Results</title>
 </head>
 <body>
@@ -144,6 +151,7 @@
 		if (sizeof($searchresultsarray) > 0)
 		{
 			//Displaying all search results into array.
+			echo "<div class='searchresults'>";
 			echo "<table class='content-table'>";
 			echo "<tr><th>Member ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Update Member</th><th>Add Sales</th><th>Delete Member</th><th>Search Sales Record</th></tr>";
 			foreach ($searchresultsarray as $searchresult)
@@ -161,6 +169,7 @@
 				echo "</tr>";	
 			}
 			echo "</table>";
+			echo "</div>";
 		}	
 	?>
 	<a href="search_members.php" class="choose_back"><p class="back">&larr;&nbsp;Go Back</p></a>

@@ -6,6 +6,13 @@
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
     <link rel="stylesheet" href="styles.css"/>
+	<style type="text/css">
+		.content-table {
+			justify-content: center;
+    		text-align: center;
+			margin: auto;
+		}
+	</style>
     <title>Search Sales Results</title>
 </head>
 <body>

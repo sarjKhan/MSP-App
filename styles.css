@@ -199,10 +199,10 @@ input:hover {
     float: left;
     color: white;
     text-align: center;
-    padding: 14px 2px;
-    padding-right: 15px;
+    padding: 14px 3px 14px 3px;
     text-decoration: none;
     font-size: 18px;
+    margin: auto;
 }
 
 .topnav a:hover {
@@ -272,6 +272,8 @@ zoom: 150%;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.20);
+    justify-content: center;
+    text-align: center;
 }
 
 .content-table th tr {
@@ -309,9 +311,7 @@ zoom: 150%;
 }
 
 .inherit {
-    position: absolute;
-    top: 45%;
-    right: 48%
+    position: relative;
 }
 
 .topnav {
