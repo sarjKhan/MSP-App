@@ -6,11 +6,24 @@
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
     <link rel="stylesheet" href="styles.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style type="text/css">
+		* {
+		}
 		.content-table {
 			justify-content: center;
     		text-align: center;
 			margin: auto;
+		}
+		.export {
+			background-color: green;
+			text-decoration: none;
+			width: 90px;
+			margin: 10px 5px 10px 5px;
+			font-size: 20px;
+			border-radius: 5px 5px 5px 5px;
+			padding: 4px 4px 4px 4px;
+			display: inline-block;
 		}
 	</style>
     <title>Search Sales Results</title>
@@ -145,6 +158,7 @@
 
 		if (sizeof($searchresultsarray) > 0)
 		{
+			echo "<span><a href='export.php' class='export'><i class='fa fa-download'></i>&nbsp;Export</a></span>";
 			echo "<table class='content-table'>";
 			echo "<tr><th>Sales ID</th><th>Member ID</th><th>Item Name</th><th>Item Quantity</th><th>Due Date</th><th>Update</th><th>Delete</th></tr>";
 
