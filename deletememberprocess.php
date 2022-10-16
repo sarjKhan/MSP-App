@@ -14,6 +14,14 @@
 	<?php
 		require_once("settings.php");
 
+		session_start();
+
+        if (!isset($_SESSION['loggedin']))
+        {
+            $_SESSION['message'] = "Must be logged in";
+            header("location: log_in.php");
+        }
+
 		//Checking if member id was set
 		if (isset($_POST['member_id']))
 		{

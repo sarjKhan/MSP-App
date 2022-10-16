@@ -9,7 +9,16 @@
     <title>Update Sales Form</title>
 </head>
 <body>
-<?php include 'nav.php' ?>
+<?php 
+    include 'nav.php'; 
+    session_start();
+
+    if (!isset($_SESSION['loggedin']))
+    {
+        $_SESSION['message'] = "Must be logged in";
+        header("location: log_in.php");
+    }
+?>
     <h1>Update Sales Form</h1>
     <?php
         require_once("settings.php");

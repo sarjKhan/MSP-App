@@ -13,6 +13,14 @@
 	<?php
 		require_once("settings.php");
 
+		session_start();
+
+        if (!isset($_SESSION['loggedin']))
+        {
+            $_SESSION['message'] = "Must be logged in";
+            header("location: log_in.php");
+        }
+
 		if (isset($_GET['sales_id']))
 		{
 			$sales_id = sanitiseInput($_GET['sales_id']);

@@ -14,6 +14,14 @@
 <body>
     <?php
         include "nav.php";
+
+        session_start();
+
+        if (!isset($_SESSION['loggedin']))
+        {
+            $_SESSION['message'] = "Must be logged in";
+            header("location: log_in.php");
+        }
     ?>
 
     <h1>GotoGro Memeber Management System</h1>

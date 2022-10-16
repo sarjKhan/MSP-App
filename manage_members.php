@@ -12,6 +12,14 @@
 <body>
     <?php
         include "nav.php";
+
+        session_start();
+
+        if (!isset($_SESSION['loggedin']))
+        {
+            $_SESSION['message'] = "Must be logged in";
+            header("location: log_in.php");
+        }
     ?>
     
     <h1 class="index_h1">What would you like to do:</h1>

@@ -14,6 +14,14 @@
         require_once("settings.php");
         require_once("phpfunctions.php");
 
+        session_start();
+
+        if (!isset($_SESSION['loggedin']))
+        {
+            $_SESSION['message'] = "Must be logged in";
+            header("location: log_in.php");
+        }
+
         //Validate inputs
         if (isset($_POST['member_id']) && isset($_POST['item_name']) && isset($_POST['item_quantity']) && isset($_POST['due_date']))
         {

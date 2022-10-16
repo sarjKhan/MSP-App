@@ -14,6 +14,14 @@
         require_once("settings.php");
         require_once("phpfunctions.php");
 
+        session_start();
+
+        if (!isset($_SESSION['loggedin']))
+        {
+            $_SESSION['message'] = "Must be logged in";
+            header("location: log_in.php");
+        }
+
         //Checking if form input has been entered.
         if (isset($_POST['f_name']) && isset($_POST['l_name']) && isset($_POST['email']) && isset($_POST['phone']))
         {

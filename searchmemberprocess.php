@@ -16,7 +16,16 @@
     <title>Search Member Results</title>
 </head>
 <body>
-	<?php include 'nav.php' ?>
+	<?php 
+		include 'nav.php'; 
+		session_start();
+
+        if (!isset($_SESSION['loggedin']))
+        {
+            $_SESSION['message'] = "Must be logged in";
+            header("location: log_in.php");
+        }
+	?>
 	<br>
 	<h1>Search Member Results:</h1>
 	<?php
