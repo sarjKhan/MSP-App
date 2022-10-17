@@ -12,6 +12,7 @@
 <?php include 'nav.php' ?>
 	<h1>Delete Member</h1>
 	<?php
+		require("phpfunctions.php");
 		require_once("settings.php");
 
 		session_start();
@@ -83,6 +84,7 @@
 			echo "<p>Member ID has not been set.</p>";
 		}
 	?>
-	<div onclick="history.back()"class="back" id ="historicback">&larr;&nbsp;Go Back</div>
+    <a href="index.php" class="choose_back"><p class="back">&larr;&nbsp;Return Home</p></a>
+
 </body>
 </html>

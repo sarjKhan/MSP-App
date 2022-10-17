@@ -12,6 +12,7 @@
 <?php include 'nav.php' ?>
 	<?php
 		require_once("settings.php");
+		require("phpfunctions.php");
 
 		session_start();
 
@@ -80,6 +81,7 @@
 			echo "<p>No sales record to delete</p>";
 		}
 	?>
-	<div onclick="history.back()"class="back" id ="historicback">&larr;&nbsp;Go Back</div>
+    <a href="index.php" class="choose_back"><p class="back">&larr;&nbsp;Return Home</p></a>
+
 </body>
 </html>

@@ -6,6 +6,11 @@
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
     <link rel="stylesheet" href="styles.css"/>
+	<style type="text/css">
+		table {
+			display: inline-block;
+		}
+	</style>
     <title>Delete Member</title>
 </head>
 <body>
@@ -13,6 +18,7 @@
 	<h1>Delete Member Confirm</h1>
 	<?php
 		require_once("settings.php");
+		require("phpfunctions.php");
 
 		session_start();
 

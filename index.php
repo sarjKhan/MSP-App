@@ -113,7 +113,7 @@
 
             createSalesTable($conn);
 
-            $selectquery = "SELECT * FROM sales_records WHERE due_date <= NOW() + INTERVAL 3 day";
+            $selectquery = "SELECT * FROM sales_records WHERE active=TRUE AND due_date <= NOW() + INTERVAL 3 day AND due_date >= NOW()";
 
             $result = $conn->query($selectquery);
             echo "<div class='reminder'>";

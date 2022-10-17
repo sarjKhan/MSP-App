@@ -6,11 +6,17 @@
     <meta name="Title" content="GotoGro Memeber Management Sysytem"/>
     <meta name="Authors" content="Sartaj Khan, Eddie Taing, Conrad Kotz, Jack Wylde"/>
     <link rel="stylesheet" href="styles.css"/>
+	<style type="text/css">
+		table {
+			display: inline-block;
+		}
+	</style>
     <title>Add Sales Process</title>
 </head>
 <body>
 <?php include 'nav.php' ?>
 	<?php
+		require("phpfunctions.php");
 		require_once("settings.php");
 
 		session_start();
