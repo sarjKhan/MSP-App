@@ -121,7 +121,7 @@
             else
             {
                 $due_date = strtotime($due_date);
-                $due_date = date("Y-m-d", $due_date);
+                $due_date = date("y-m-d", $due_date);
             }
 
             if (sizeof($errorMsg) == 0)
