@@ -167,6 +167,7 @@
 
 		if (sizeof($searchresultsarray) > 0)
 		{
+			$_SESSION['searchresults'] = $searchresultsarray;
 			echo "<span><a href='export.php' class='export'><i class='fa fa-download'></i>&nbsp;Export</a></span>";
 			echo "<table class='content-table'>";
 			echo "<tr><th>Sales ID</th><th>Member ID</th><th>Item Name</th><th>Item Quantity</th><th>Due Date</th><th>Update</th><th>Delete</th></tr>";
